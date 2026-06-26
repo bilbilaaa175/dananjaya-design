@@ -3,499 +3,726 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dananjaya Design Nusantara</title>
-  <meta name="description" content="PT Dananjaya Design Nusantara adalah firma arsitektur dan desain interior profesional di Bandung." />
- 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
-  <link href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" rel="stylesheet" />
-  <link href="css/style.css" rel="stylesheet" />
+  <title>Dananjaya — Interior & Architecture</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
- 
-<!-- ════════════════ NAVBAR ════════════════ -->
-<nav id="navbar" class="navbar navbar-expand-lg">
-  <div class="container">
-    <a class="navbar-brand" href="#hero">Logo Dananjaya</a>
-    <button class="navbar-toggler" type="button"
-      data-bs-toggle="collapse" data-bs-target="#navMenu"
-      aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navMenu">
-      <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-        <li class="nav-item"><a class="nav-link" href="#hero">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="#catalog">Catalog</a></li>
-        <li class="nav-item"><a class="nav-link" href="#paket">Package</a></li>
-        <li class="nav-item"><a class="nav-link" href="#publicity">Publicity</a></li>
-      </ul>
-      <a class="btn-nav-login nav-link" data-bs-toggle="modal" data-bs-target="#authModal" style="cursor:pointer;">
-        <i class="bi bi-person me-1"></i> Login / Daftar
-      </a>
+
+  <!-- ═══════════════════════════════════════
+       NAVBAR
+  ══════════════════════════════════════════ -->
+  <nav class="navbar navbar-expand-lg sticky-top" id="mainNavbar">
+    <div class="container-fluid px-4">
+      <a class="navbar-brand" href="index.html">Dananjaya<span>.</span></a>
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navCollapse">
+        <i class="bi bi-list fs-4"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navCollapse">
+        <ul class="navbar-nav mx-auto gap-1">
+          <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="pages/catalog.html">Catalog</a></li>
+          <li class="nav-item"><a class="nav-link" href="pages/package.html">Package</a></li>
+          <li class="nav-item"><a class="nav-link" href="pages/publicity.html">Publicity</a></li>
+          <li class="nav-item"><a class="nav-link" href="pages/contact.html">Contact</a></li>
+        </ul>
+        <div class="d-flex align-items-center gap-2">
+          <button class="nav-icon-btn position-relative" title="Shopping Cart">
+            <i class="bi bi-bag"></i>
+            <span class="cart-badge">0</span>
+          </button>
+          <div class="avatar-btn" data-bs-toggle="modal" data-bs-target="#authModal" title="Login / Register">
+            <i class="bi bi-person"></i>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-</nav>
- 
- 
-<!-- ════════════════ HERO ════════════════ -->
+  </nav>
+
+  <!-- ════════════════ HERO ════════════════ -->
 <section id="hero">
   <div class="hero-bg"></div>
-  <div class="container">
-    <div class="hero-content col-lg-8">
-      <span class="eyebrow">Arsitektur & Desain Interior Profesional</span>
-      <h1>Ruang yang<br><em>Bercerita</em></h1>
-      <p>Kami merancang ruang yang mencerminkan kepribadian, nilai, dan aspirasi klien kami — dari konsep hingga konstruksi.</p>
-      <div class="d-flex flex-wrap gap-3">
-        <a href="#catalog" class="btn-cta-primary">Lihat Katalog</a>
-        <a href="#publicity" class="btn-cta-outline">Portofolio Proyek</a>
-      </div>
-      <div class="hero-stats">
-        <div class="hero-stat"><div class="num">150+</div><div class="lbl">Proyek Selesai</div></div>
-        <div class="hero-stat"><div class="num">12</div><div class="lbl">Tahun Berpengalaman</div></div>
-        <div class="hero-stat"><div class="num">40+</div><div class="lbl">Klien Korporat</div></div>
-      </div>
-    </div>
-  </div>
 </section>
- 
- 
-<!-- ════════════════ ABOUT STRIP ════════════════ -->
-<div id="about-strip">
-  <div class="container">
-    <div class="row align-items-center">
-      <div class="col-lg-5 mb-4 mb-lg-0">
-        <div class="strip-line"></div>
-        <h2 class="strip-heading">PT Dananjaya Design Nusantara</h2>
-      </div>
-      <div class="col-lg-6 offset-lg-1">
-        <p>Firma desain kami berdiri di Bandung dengan visi menghadirkan arsitektur dan desain interior yang berpusat pada manusia. Setiap proyek kami dimulai dari pemahaman mendalam tentang cara klien menghuni dan mengalami ruang.</p>
-      </div>
+
+  <!-- ═══════════════════════════════════════
+       SUB NAVIGATION (Home only)
+  ══════════════════════════════════════════ -->
+  <nav id="homeSubNav">
+    <div class="container-fluid px-4">
+      <ul class="sub-nav-list">
+        <li><a href="#who" class="active">Who</a></li>
+        <li><a href="#how">How</a></li>
+        <li><a href="#team">Team</a></li>
+        <li><a href="#client">Client</a></li>
+        <li><a href="#timeline">Timeline</a></li>
+      </ul>
     </div>
-  </div>
-</div>
- 
- 
-<!-- ════════════════ CATALOG — Cinematic Carousel ════════════════ -->
-<section id="catalog">
-  <div class="container mb-5 fade-up">
-    <div class="row">
-      <div class="col-lg-6">
-        <span class="eyebrow">Layanan Kami</span>
-        <h2 class="section-title">Apa yang Kami <em>Tawarkan</em></h2>
-      </div>
-      <div class="col-lg-5 offset-lg-1 d-flex align-items-end">
-        <p style="color:var(--c-muted);font-size:14px;line-height:1.85">
-          Dari desain interior hunian hingga proyek arsitektur komersial skala besar, kami hadir sebagai mitra kreatif Anda.
-        </p>
-      </div>
-    </div>
-  </div>
- 
-  <!-- Full-width carousel (keluar dari container) -->
-  <div class="fade-up">
-    <div style="position:relative;">
-      <div class="swiper catalog-hero-swiper">
-        <div class="swiper-wrapper">
- 
-          <div class="swiper-slide">
-            <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1800" alt="Desain Interior Residensial" loading="lazy" />
-            <div class="catalog-slide-info">
-              <div class="slide-text">
-                <h3>Desain Interior<br>Residensial</h3>
-                <span>Hunian Privat</span>
-              </div>
-              <div class="slide-num">01</div>
-            </div>
-          </div>
- 
-          <div class="swiper-slide">
-            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1800" alt="Desain Interior Komersial" loading="lazy" />
-            <div class="catalog-slide-info">
-              <div class="slide-text">
-                <h3>Desain Interior<br>Komersial</h3>
-                <span>Kantor & Ritel</span>
-              </div>
-              <div class="slide-num">02</div>
-            </div>
-          </div>
- 
-          <div class="swiper-slide">
-            <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1800" alt="Arsitektur Bangunan" loading="lazy" />
-            <div class="catalog-slide-info">
-              <div class="slide-text">
-                <h3>Arsitektur<br>Bangunan</h3>
-                <span>Desain & Konstruksi</span>
-              </div>
-              <div class="slide-num">03</div>
-            </div>
-          </div>
- 
-          <div class="swiper-slide">
-            <img src="https://images.unsplash.com/photo-1615529328331-f8917597711f?w=1800" alt="Desain Lansekap" loading="lazy" />
-            <div class="catalog-slide-info">
-              <div class="slide-text">
-                <h3>Desain<br>Lansekap</h3>
-                <span>Taman & Outdoor</span>
-              </div>
-              <div class="slide-num">04</div>
-            </div>
-          </div>
- 
-          <div class="swiper-slide">
-            <img src="https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=1800" alt="Renovasi & Restorasi" loading="lazy" />
-            <div class="catalog-slide-info">
-              <div class="slide-text">
-                <h3>Renovasi &<br>Restorasi</h3>
-                <span>Revitalisasi Ruang</span>
-              </div>
-              <div class="slide-num">05</div>
-            </div>
-          </div>
- 
-        </div>
- 
-        <!-- Tombol navigasi pojok kanan bawah slide -->
-        <div class="catalog-nav">
-          <div class="catalog-nav-btn" id="cat-prev"><i class="bi bi-arrow-left"></i></div>
-          <div class="catalog-nav-btn" id="cat-next"><i class="bi bi-arrow-right"></i></div>
-        </div>
- 
-        <!-- Progress bar bawah slide -->
-        <div class="catalog-progress">
-          <div class="catalog-progress-fill" id="cat-progress"></div>
-        </div>
-      </div>
- 
-      <!-- Thumbnail strip -->
-      <div class="catalog-thumbs" id="catalogThumbs">
-        <div class="catalog-thumb active" data-index="0">
-          <div class="thumb-num">01</div>
-          <div class="thumb-text"><h6>Desain Interior Residensial</h6><span>Hunian Privat</span></div>
-        </div>
-        <div class="catalog-thumb" data-index="1">
-          <div class="thumb-num">02</div>
-          <div class="thumb-text"><h6>Desain Interior Komersial</h6><span>Kantor & Ritel</span></div>
-        </div>
-        <div class="catalog-thumb" data-index="2">
-          <div class="thumb-num">03</div>
-          <div class="thumb-text"><h6>Arsitektur Bangunan</h6><span>Desain & Konstruksi</span></div>
-        </div>
-        <div class="catalog-thumb" data-index="3">
-          <div class="thumb-num">04</div>
-          <div class="thumb-text"><h6>Desain Lansekap</h6><span>Taman & Outdoor</span></div>
-        </div>
-        <div class="catalog-thumb" data-index="4">
-          <div class="thumb-num">05</div>
-          <div class="thumb-text"><h6>Renovasi & Restorasi</h6><span>Revitalisasi Ruang</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
- 
- 
-<!-- ════════════════ PAKET ════════════════ -->
-<section id="paket">
-  <div class="container">
-    <!-- Header + tombol navigasi sejajar -->
-    <div class="row align-items-end mb-0 fade-up">
-      <div class="col-lg-7">
-        <span class="eyebrow">Paket Layanan</span>
-        <h2 class="section-title">Pilih Paket yang <em>Sesuai</em></h2>
-        <p style="color:var(--c-muted);max-width:480px;font-size:14px">
-          Semua paket dapat dikustomisasi. Konsultasi awal gratis.
-        </p>
-      </div>
-      <!-- Tombol di sini, rata kanan, sejajar heading -->
-      <div class="col-lg-5 d-flex justify-content-end align-items-end pb-1">
-        <div class="d-flex gap-2">
-          <div class="snav-btn" id="paket-prev"><i class="bi bi-arrow-left"></i></div>
-          <div class="snav-btn" id="paket-next"><i class="bi bi-arrow-right"></i></div>
-        </div>
-      </div>
-    </div>
- 
-    <div class="slider-outer fade-up">
-      <div class="swiper paket-swiper">
-        <div class="swiper-wrapper">
- 
-          <div class="swiper-slide">
-            <div class="paket-card">
-              <div class="paket-icon"><i class="bi bi-pencil-square"></i></div>
-              <h4>Starter</h4>
-              <p style="font-size:13px;color:var(--c-muted)">Untuk hunian kecil dan renovasi ringan.</p>
-              <div class="paket-price">Rp 15 jt</div>
-              <div class="paket-price-note">mulai dari / proyek</div>
-              <div class="paket-divider"></div>
-              <div class="paket-feature"><i class="bi bi-check2"></i> Konsultasi desain (3 sesi)</div>
-              <div class="paket-feature"><i class="bi bi-check2"></i> Denah layout 2D</div>
-              <div class="paket-feature"><i class="bi bi-check2"></i> Mood board & palet warna</div>
-              <div class="paket-feature"><i class="bi bi-check2"></i> Rekomendasi material</div>
-              <div class="paket-feature" style="opacity:.35"><i class="bi bi-x"></i> Render 3D</div>
-              <div class="paket-feature" style="opacity:.35"><i class="bi bi-x"></i> Pengawasan konstruksi</div>
-              <a href="#" class="btn-paket">Pilih Paket</a>
-            </div>
-          </div>
- 
-          <div class="swiper-slide">
-            <div class="paket-card featured">
-              <div class="paket-badge">Terpopuler</div>
-              <div class="paket-icon"><i class="bi bi-layers"></i></div>
-              <h4>Professional</h4>
-              <p style="font-size:13px;color:rgba(255,255,255,0.45)">Solusi lengkap untuk hunian dan komersial.</p>
-              <div class="paket-price">Rp 45 jt</div>
-              <div class="paket-price-note">mulai dari / proyek</div>
-              <div class="paket-divider"></div>
-              <div class="paket-feature"><i class="bi bi-check2"></i> Konsultasi desain (unlimited)</div>
-              <div class="paket-feature"><i class="bi bi-check2"></i> Denah layout 2D & 3D</div>
-              <div class="paket-feature"><i class="bi bi-check2"></i> Render 3D fotorealistik</div>
-              <div class="paket-feature"><i class="bi bi-check2"></i> Spesifikasi material lengkap</div>
-              <div class="paket-feature"><i class="bi bi-check2"></i> Bill of Quantity (RAB)</div>
-              <div class="paket-feature" style="opacity:.45"><i class="bi bi-x"></i> Pengawasan konstruksi</div>
-              <a href="#" class="btn-paket">Pilih Paket</a>
-            </div>
-          </div>
- 
-          <div class="swiper-slide">
-            <div class="paket-card">
-              <div class="paket-icon"><i class="bi bi-building"></i></div>
-              <h4>Enterprise</h4>
-              <p style="font-size:13px;color:var(--c-muted)">Proyek skala besar dengan pengawasan penuh.</p>
-              <div class="paket-price">Custom</div>
-              <div class="paket-price-note">harga berdasarkan skala proyek</div>
-              <div class="paket-divider"></div>
-              <div class="paket-feature"><i class="bi bi-check2"></i> Semua fitur Professional</div>
-              <div class="paket-feature"><i class="bi bi-check2"></i> Pengawasan konstruksi</div>
-              <div class="paket-feature"><i class="bi bi-check2"></i> Manajemen proyek penuh</div>
-              <div class="paket-feature"><i class="bi bi-check2"></i> Koordinasi kontraktor</div>
-              <div class="paket-feature"><i class="bi bi-check2"></i> Garansi purna desain 1 tahun</div>
-              <div class="paket-feature"><i class="bi bi-check2"></i> Dedicated project manager</div>
-              <a href="#" class="btn-paket">Hubungi Kami</a>
-            </div>
-          </div>
- 
-          <div class="swiper-slide">
-            <div class="paket-card">
-              <div class="paket-icon"><i class="bi bi-gem"></i></div>
-              <h4>Premium</h4>
-              <p style="font-size:13px;color:var(--c-muted)">Untuk klien VIP dengan standar tertinggi.</p>
-              <div class="paket-price">Rp 120 jt</div>
-              <div class="paket-price-note">mulai dari / proyek</div>
-              <div class="paket-divider"></div>
-              <div class="paket-feature"><i class="bi bi-check2"></i> Semua fitur Enterprise</div>
-              <div class="paket-feature"><i class="bi bi-check2"></i> Konsultasi on-site mingguan</div>
-              <div class="paket-feature"><i class="bi bi-check2"></i> Material premium pilihan</div>
-              <div class="paket-feature"><i class="bi bi-check2"></i> Virtual walkthrough VR</div>
-              <div class="paket-feature"><i class="bi bi-check2"></i> Garansi purna desain 3 tahun</div>
-              <div class="paket-feature"><i class="bi bi-check2"></i> Priority support 24/7</div>
-              <a href="#" class="btn-paket">Hubungi Kami</a>
-            </div>
-          </div>
- 
-        </div>
-        <div class="swiper-pagination" id="paket-pag"></div>
-      </div>
-    </div>
-  </div>
-</section>
- 
- 
-<!-- ════════════════ PUBLICITY ════════════════ -->
-<section id="publicity">
-  <div class="container">
-    <!-- Header + filter + tombol navigasi -->
-    <div class="row align-items-end mb-0 fade-up">
-      <div class="col-lg-6">
-        <span class="eyebrow">Portofolio</span>
-        <h2 class="section-title">Proyek <em>Terpilih</em></h2>
-      </div>
-      <div class="col-lg-6 d-flex justify-content-end align-items-end pb-1">
-        <div class="d-flex align-items-center gap-3">
-          <a href="pages/projects.html" style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--c-accent);font-weight:500;white-space:nowrap">
-            Lihat Semua <i class="bi bi-arrow-right ms-1"></i>
-          </a>
-          <div class="d-flex gap-2">
-            <div class="snav-btn" id="pub-prev"><i class="bi bi-arrow-left"></i></div>
-            <div class="snav-btn" id="pub-next"><i class="bi bi-arrow-right"></i></div>
-          </div>
-        </div>
-      </div>
-    </div>
- 
-    <!-- Filter tabs -->
-    <div class="publicity-filter fade-up mt-4">
-      <button class="filter-btn active">Semua</button>
-      <button class="filter-btn">Residensial</button>
-      <button class="filter-btn">Komersial</button>
-      <button class="filter-btn">Hospitality</button>
-      <button class="filter-btn">Arsitektur</button>
-    </div>
- 
-    <div class="slider-outer fade-up">
-      <div class="swiper pub-swiper">
-        <div class="swiper-wrapper">
- 
-          <div class="swiper-slide">
-            <div class="pub-item">
-              <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=900" alt="Villa Cipanas" loading="lazy" />
-              <div class="pub-overlay"><h5>Villa Cipanas</h5><span>Residensial · 2024</span></div>
-            </div>
-          </div>
- 
-          <div class="swiper-slide">
-            <div class="pub-item">
-              <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=900" alt="Kantor BDG" loading="lazy" />
-              <div class="pub-overlay"><h5>Kantor Pusat BDG Co.</h5><span>Komersial · 2024</span></div>
-            </div>
-          </div>
- 
-          <div class="swiper-slide">
-            <div class="pub-item">
-              <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=900" alt="Apartemen Dago" loading="lazy" />
-              <div class="pub-overlay"><h5>Apartemen Dago Pakar</h5><span>Residensial · 2023</span></div>
-            </div>
-          </div>
- 
-          <div class="swiper-slide">
-            <div class="pub-item">
-              <img src="https://images.unsplash.com/photo-1590381105924-c72589b9ef3f?w=900" alt="Restoran Braga" loading="lazy" />
-              <div class="pub-overlay"><h5>Restoran Braga House</h5><span>Hospitality · 2023</span></div>
-            </div>
-          </div>
- 
-          <div class="swiper-slide">
-            <div class="pub-item">
-              <img src="https://images.unsplash.com/photo-1560448204-603b3fc33ddc?w=900" alt="Klinik Setiabudi" loading="lazy" />
-              <div class="pub-overlay"><h5>Klinik Setiabudi</h5><span>Komersial · 2022</span></div>
-            </div>
-          </div>
- 
-          <div class="swiper-slide">
-            <div class="pub-item">
-              <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900" alt="Rumah Cimahi" loading="lazy" />
-              <div class="pub-overlay"><h5>Rumah Tinggal Cimahi</h5><span>Residensial · 2022</span></div>
-            </div>
-          </div>
- 
-          <div class="swiper-slide">
-            <div class="pub-item">
-              <img src="https://images.unsplash.com/photo-1613977257363-707ba9348227?w=900" alt="Hotel Lembang" loading="lazy" />
-              <div class="pub-overlay"><h5>Hotel Boutique Lembang</h5><span>Hospitality · 2021</span></div>
-            </div>
-          </div>
- 
-        </div>
-        <div class="swiper-pagination" id="pub-pag"></div>
-      </div>
-    </div>
-  </div>
-</section>
- 
- 
-<!-- ════════════════ CTA BAND ════════════════ -->
-<div id="cta-band">
-  <div class="container fade-up">
-    <h2>Siap mewujudkan<br><em>ruang impian</em> Anda?</h2>
-    <div class="d-flex flex-wrap align-items-center">
-      <a href="mailto:hello@ddn-studio.com" class="btn-cta-primary">Mulai Konsultasi</a>
-      <a href="tel:+622212345678" class="btn-cta-outline"><i class="bi bi-telephone me-2"></i>+62 22 1234 5678</a>
-    </div>
-  </div>
-</div>
- 
- 
-<!-- ════════════════ FOOTER ════════════════ -->
-<footer id="footer">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-4 mb-5 mb-lg-0">
-        <div class="footer-brand">DDN <span>Studio</span></div>
-        <p class="footer-desc">Firma arsitektur dan desain interior profesional yang berbasis di Bandung. Melayani klien residensial, komersial, dan hospitality.</p>
-        <div>
-          <a href="#" class="footer-social"><i class="bi bi-instagram"></i></a>
-          <a href="#" class="footer-social"><i class="bi bi-linkedin"></i></a>
-          <a href="#" class="footer-social"><i class="bi bi-behance"></i></a>
-        </div>
-      </div>
-      <div class="col-6 col-lg-2 mb-4 mb-lg-0">
-        <div class="footer-heading">Layanan</div>
-        <a class="footer-link" href="#catalog">Desain Interior</a>
-        <a class="footer-link" href="#catalog">Arsitektur</a>
-        <a class="footer-link" href="#catalog">Konsultasi</a>
-        <a class="footer-link" href="#catalog">Manajemen Proyek</a>
-      </div>
-      <div class="col-6 col-lg-2 mb-4 mb-lg-0">
-        <div class="footer-heading">Navigasi</div>
-        <a class="footer-link" href="#hero">Home</a>
-        <a class="footer-link" href="#catalog">Catalog</a>
-        <a class="footer-link" href="#paket">Package</a>
-        <a class="footer-link" href="#publicity">Publicity</a>
-      </div>
-      <div class="col-lg-3 offset-lg-1">
-        <div class="footer-heading">Kontak</div>
-        <p style="font-size:13px;line-height:1.9;color:rgba(255,255,255,0.4)">
-          Jl. Cipagalo, Kec. Bojongsoang, Kabupaten Bandung<br>Jawa Barat 40287<br><br>
-          hello@ddn-studio.com<br>+62 22 1234 5678 
-        </p>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>&copy; 2025 PT Dananjaya Design Nusantara. Semua hak dilindungi.</span>
+  </nav>
+
+  <!-- ═══════════════════════════════════════
+       SECTION — WHO
+  ══════════════════════════════════════════ -->
+  <section class="home-section" id="who">
+    <div class="section-indicator">
       <div>
-        <a class="footer-link" href="#" style="display:inline;margin-right:20px">Privasi</a>
-        <a class="footer-link" href="#" style="display:inline">Syarat & Ketentuan</a>
+        <div class="indicator-line"></div>
+        <span>Who</span>
       </div>
     </div>
-  </div>
-</footer>
- 
- 
-<!-- ════════════════ AUTH MODAL ════════════════ -->
-<div class="modal fade" id="authModal" tabindex="-1" aria-labelledby="authModalTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" style="max-width:440px">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="authModalTitle">Masuk</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+    <div class="section-content">
+      <p class="who-eyebrow fade-up">Interior & Architecture Studio</p>
+      <p class="who-desc fade-up fade-up-delay-2">
+        Dananjaya adalah studio desain interior dan arsitektur yang berkomitmen menghadirkan ruang yang fungsional, estetis, dan memiliki karakter. Kami percaya bahwa setiap proyek memiliki cerita dan kebutuhan yang unik, 
+        sehingga setiap solusi desain dirancang secara khusus melalui perpaduan kreativitas, ketelitian, dan pemahaman terhadap kebutuhan klien. Mulai dari tahap perencanaan, pengembangan konsep, hingga proses realisasi, 
+        kami mengedepankan kualitas, inovasi, dan perhatian pada setiap detail untuk menciptakan ruang yang nyaman, bernilai, serta mampu memberikan pengalaman yang bermakna bagi penggunanya. <br> Dananjaya adalah studio 
+        desain interior dan arsitektur yang berfokus pada penciptaan ruang dengan karakter. Kami menggabungkan sensibilitas estetis modern 
+        dengan kekayaan material lokal untuk menghasilkan lingkungan yang fungsional sekaligus memikat. <br> Dananjaya adalah studio desain interior dan arsitektur yang berfokus pada penciptaan ruang dengan karakter. Kami 
+        menggabungkan sensibilitas estetis modern dengan kekayaan material lokal untuk menghasilkan lingkungan yang fungsional sekaligus memikat. <br> Dananjaya merupakan studio desain interior dan arsitektur yang bergerak 
+        dalam perancangan ruang hunian, komersial, dan publik dengan pendekatan yang mengutamakan fungsi, estetika, serta kualitas. Kami berkomitmen menciptakan desain yang tidak hanya menarik secara visual, tetapi juga mampu 
+        menjawab kebutuhan pengguna dan perkembangan gaya hidup modern. Dengan menggabungkan kreativitas, eksplorasi material, serta proses desain yang kolaboratif, Dananjaya menghadirkan solusi ruang yang berkarakter, berkelanjutan, 
+        dan memberikan nilai jangka panjang bagi setiap klien dan proyek yang kami kerjakan. <br> Dananjaya adalah studio desain interior dan arsitektur yang berfokus pada penciptaan ruang yang fungsional, estetis, dan berkarakter.
+         Dengan mengutamakan kualitas desain, detail pengerjaan, serta kolaborasi bersama klien, kami menghadirkan solusi ruang yang mampu memenuhi kebutuhan sekaligus mencerminkan identitas setiap proyek.
+      </p> 
+
+      <!-- <div class="who-pillars fade-up fade-up-delay-3">
+        <div class="pillar-card">
+          <h4>Visi</h4>
+          <p>Menjadi studio desain terdepan yang mengangkat identitas ruang Indonesia ke panggung arsitektur global melalui inovasi dan kedalaman budaya.</p>
+        </div>
+        <div class="pillar-card">
+          <h4>Misi</h4>
+          <p>Menghadirkan solusi desain yang holistik — mulai dari konsep hingga eksekusi — dengan standar material premium dan ketepatan rancang bangun yang tak kompromi.</p>
+        </div>
+      </div> -->
+      <div class="who-photo-placeholder fade-up">
+        <span><i class="bi bi-image me-2"></i>Company Photo</span>
       </div>
-      <div class="modal-body">
-        <div id="loginView">
-          <div class="mb-3"><label class="form-label">Email</label><input type="email" class="form-control" placeholder="email@kamu.com" /></div>
-          <div class="mb-3"><label class="form-label">Password</label><input type="password" class="form-control" placeholder="••••••••" /></div>
-          <div class="d-flex justify-content-between align-items-center mb-4">
-            <div class="form-check" style="margin:0">
-              <input class="form-check-input" type="checkbox" id="rememberMe" />
-              <label class="form-check-label" for="rememberMe" style="font-size:13px">Ingat saya</label>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       SECTION — HOW
+  ══════════════════════════════════════════ -->
+  <section class="home-section" id="how">
+    <div class="section-indicator">
+      <div>
+        <div class="indicator-line"></div>
+        <span>How</span>
+      </div>
+    </div>
+    <div class="section-content">
+      <p class="who-eyebrow fade-up">Metode Kerja</p>
+      <p class="who-desc fade-up fade-up-delay-2">
+        Dananjaya adalah studio desain interior dan arsitektur yang berkomitmen menghadirkan ruang yang fungsional, estetis, dan memiliki karakter. Kami percaya bahwa setiap proyek memiliki cerita dan kebutuhan yang unik, 
+        sehingga setiap solusi desain dirancang secara khusus melalui perpaduan kreativitas, ketelitian, dan pemahaman terhadap kebutuhan klien. Mulai dari tahap perencanaan, pengembangan konsep, hingga proses realisasi, 
+        kami mengedepankan kualitas, inovasi, dan perhatian pada setiap detail untuk menciptakan ruang yang nyaman, bernilai, serta mampu memberikan pengalaman yang bermakna bagi penggunanya. <br> Dananjaya adalah studio 
+        desain interior dan arsitektur yang berfokus pada penciptaan ruang dengan karakter. Kami menggabungkan sensibilitas estetis modern 
+        dengan kekayaan material lokal untuk menghasilkan lingkungan yang fungsional sekaligus memikat. <br> Dananjaya adalah studio desain interior dan arsitektur yang berfokus pada penciptaan ruang dengan karakter. Kami 
+        menggabungkan sensibilitas estetis modern dengan kekayaan material lokal untuk menghasilkan lingkungan yang fungsional sekaligus memikat. <br> Dananjaya merupakan studio desain interior dan arsitektur yang bergerak 
+        dalam perancangan ruang hunian, komersial, dan publik dengan pendekatan yang mengutamakan fungsi, estetika, serta kualitas. Kami berkomitmen menciptakan desain yang tidak hanya menarik secara visual, tetapi juga mampu 
+        menjawab kebutuhan pengguna dan perkembangan gaya hidup modern. Dengan menggabungkan kreativitas, eksplorasi material, serta proses desain yang kolaboratif, Dananjaya menghadirkan solusi ruang yang berkarakter, berkelanjutan, 
+        dan memberikan nilai jangka panjang bagi setiap klien dan proyek yang kami kerjakan. <br> Dananjaya adalah studio desain interior dan arsitektur yang berfokus pada penciptaan ruang yang fungsional, estetis, dan berkarakter.
+         Dengan mengutamakan kualitas desain, detail pengerjaan, serta kolaborasi bersama klien, kami menghadirkan solusi ruang yang mampu memenuhi kebutuhan sekaligus mencerminkan identitas setiap proyek.
+      </p> 
+      <div class="how-photo-placeholder fade-up">
+        <span><i class="bi bi-image me-2"></i>Company Photo</span>
+      </div>
+      <!-- <div class="how-process fade-up">
+        <div class="process-step">
+          <span class="process-step-num">01</span>
+          <h4>Discovery</h4>
+          <p>Memahami kebutuhan, gaya hidup, dan visi klien melalui sesi konsultasi mendalam sebelum pena menyentuh kertas.</p>
+        </div>
+        <div class="process-step">
+          <span class="process-step-num">02</span>
+          <h4>Concept</h4>
+          <p>Menerjemahkan temuan ke dalam moodboard, skema warna, dan rencana spatial yang kohesif dan terarah.</p>
+        </div>
+        <div class="process-step">
+          <span class="process-step-num">03</span>
+          <h4>Design</h4>
+          <p>Pengembangan desain teknis lengkap: denah, tampak, detail konstruksi, dan spesifikasi material.</p>
+        </div>
+        <div class="process-step">
+          <span class="process-step-num">04</span>
+          <h4>Execution</h4>
+          <p>Pengawasan penuh di lapangan — koordinasi kontraktor, pengadaan material, dan quality control ketat.</p>
+        </div>
+        <div class="process-step">
+          <span class="process-step-num">05</span>
+          <h4>Delivery</h4>
+          <p>Serah terima proyek dengan dokumentasi lengkap dan dukungan purna jual untuk kepuasan optimal klien.</p>
+        </div>
+        <div class="process-step">
+          <span class="process-step-num">06</span>
+          <h4>Feedback</h4>
+          <p>Evaluasi bersama klien pasca-hunian untuk memastikan desain bekerja dalam kehidupan nyata sehari-hari.</p>
+        </div>
+      </div>
+
+      <div class="design-phases fade-up">
+        <div class="phase-block">
+          <h4>Design Thinking</h4>
+          <div class="phase-steps">
+            <span class="phase-tag">Define</span>
+            <span class="phase-tag">Collect</span>
+            <span class="phase-tag">Brainstorm</span>
+            <span class="phase-tag">Develop</span>
+            <span class="phase-tag">Feedback</span>
+          </div>
+        </div>
+        <div class="phase-block">
+          <h4>Design Doing</h4>
+          <div class="phase-steps">
+            <span class="phase-tag">Planning</span>
+            <span class="phase-tag">Design</span>
+            <span class="phase-tag">Management</span>
+            <span class="phase-tag">Improve</span>
+            <span class="phase-tag">Deliver</span>
+          </div>
+        </div>
+      </div> -->
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       SECTION — TEAM
+  ══════════════════════════════════════════ -->
+  <section class="home-section" id="team">
+    <div class="section-indicator">
+      <div>
+        <div class="indicator-line"></div>
+        <span>Team</span>
+      </div>
+    </div>
+    <div class="section-content">
+      <p class="who-eyebrow fade-up">Tim Kami</p>
+      <h2 class="fade-up fade-up-delay-1" style="margin-bottom:2.5rem;">Orang-orang di Balik Setiap Rancangan</h2>
+
+      <div class="row g-0">
+        <!-- Filter sidebar (left within content) -->
+        <div class="col-auto" style="min-width:130px;">
+          <div class="team-filters">
+            <button class="filter-btn active" data-division="all">All</button>
+            <button class="filter-btn" data-division="key">Key</button>
+            <button class="filter-btn" data-division="planner">Planner</button>
+            <button class="filter-btn" data-division="designer">Designer</button>
+            <button class="filter-btn" data-division="engineer">Engineer</button>
+            <button class="filter-btn" data-division="administration">Administration</button>
+            <button class="filter-btn" data-division="support">Support</button>
+          </div>
+        </div>
+        <!-- Team grid -->
+        <div class="col ps-4">
+          <div class="team-grid">
+            <!-- Key -->
+            <div class="team-card" data-division="key">
+              <div class="team-card-img-placeholder"><i class="bi bi-person-fill"></i></div>
+              <div class="team-card-overlay">
+                <p class="team-card-name">Arya Dananjaya</p>
+                <p class="team-card-role">Principal Architect</p>
+              </div>
             </div>
-            <a href="#" style="font-size:13px;color:var(--c-accent)">Lupa password?</a>
+            <div class="team-card" data-division="key">
+              <div class="team-card-img-placeholder"><i class="bi bi-person-fill"></i></div>
+              <div class="team-card-overlay">
+                <p class="team-card-name">Sinta Maharani</p>
+                <p class="team-card-role">Creative Director</p>
+              </div>
+            </div>
+            <!-- Planner -->
+            <div class="team-card" data-division="planner">
+              <div class="team-card-img-placeholder"><i class="bi bi-person-fill"></i></div>
+              <div class="team-card-overlay">
+                <p class="team-card-name">Budi Santoso</p>
+                <p class="team-card-role">Senior Planner</p>
+              </div>
+            </div>
+            <div class="team-card" data-division="planner">
+              <div class="team-card-img-placeholder"><i class="bi bi-person-fill"></i></div>
+              <div class="team-card-overlay">
+                <p class="team-card-name">Dewi Rahayu</p>
+                <p class="team-card-role">Spatial Planner</p>
+              </div>
+            </div>
+            <!-- Designer -->
+            <div class="team-card" data-division="designer">
+              <div class="team-card-img-placeholder"><i class="bi bi-person-fill"></i></div>
+              <div class="team-card-overlay">
+                <p class="team-card-name">Rizki Pratama</p>
+                <p class="team-card-role">Interior Designer</p>
+              </div>
+            </div>
+            <div class="team-card" data-division="designer">
+              <div class="team-card-img-placeholder"><i class="bi bi-person-fill"></i></div>
+              <div class="team-card-overlay">
+                <p class="team-card-name">Ayu Lestari</p>
+                <p class="team-card-role">Graphic Designer</p>
+              </div>
+            </div>
+            <div class="team-card" data-division="designer">
+              <div class="team-card-img-placeholder"><i class="bi bi-person-fill"></i></div>
+              <div class="team-card-overlay">
+                <p class="team-card-name">Fajar Nugroho</p>
+                <p class="team-card-role">3D Visualizer</p>
+              </div>
+            </div>
+            <!-- Engineer -->
+            <div class="team-card" data-division="engineer">
+              <div class="team-card-img-placeholder"><i class="bi bi-person-fill"></i></div>
+              <div class="team-card-overlay">
+                <p class="team-card-name">Hendra Wijaya</p>
+                <p class="team-card-role">Structural Engineer</p>
+              </div>
+            </div>
+            <div class="team-card" data-division="engineer">
+              <div class="team-card-img-placeholder"><i class="bi bi-person-fill"></i></div>
+              <div class="team-card-overlay">
+                <p class="team-card-name">Putri Anggraini</p>
+                <p class="team-card-role">MEP Engineer</p>
+              </div>
+            </div>
+            <!-- Administration -->
+            <div class="team-card" data-division="administration">
+              <div class="team-card-img-placeholder"><i class="bi bi-person-fill"></i></div>
+              <div class="team-card-overlay">
+                <p class="team-card-name">Sari Wulandari</p>
+                <p class="team-card-role">Project Admin</p>
+              </div>
+            </div>
+            <!-- Support -->
+            <div class="team-card" data-division="support">
+              <div class="team-card-img-placeholder"><i class="bi bi-person-fill"></i></div>
+              <div class="team-card-overlay">
+                <p class="team-card-name">Dimas Kurniawan</p>
+                <p class="team-card-role">Site Support</p>
+              </div>
+            </div>
+            <div class="team-card" data-division="support">
+              <div class="team-card-img-placeholder"><i class="bi bi-person-fill"></i></div>
+              <div class="team-card-overlay">
+                <p class="team-card-name">Rani Susanti</p>
+                <p class="team-card-role">Client Support</p>
+              </div>
+            </div>
           </div>
-          <button class="btn-modal-submit">Masuk</button>
-          <div class="auth-switch">Belum punya akun? <a onclick="showRegister()">Daftar sekarang</a></div>
         </div>
-        <div id="registerView" class="d-none">
-          <div class="row g-3 mb-3">
-            <div class="col-6"><label class="form-label">Nama Depan</label><input type="text" class="form-control" placeholder="Budi" /></div>
-            <div class="col-6"><label class="form-label">Nama Belakang</label><input type="text" class="form-control" placeholder="Santoso" /></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       SECTION — CLIENT
+  ══════════════════════════════════════════ -->
+  <section class="home-section" id="client">
+    <div class="section-indicator">
+      <div>
+        <div class="indicator-line"></div>
+        <span>Client</span>
+      </div>
+    </div>
+    <div class="section-content">
+      <p class="who-eyebrow fade-up">Klien Kami</p>
+      <h2 class="client-title fade-up fade-up-delay-1">Dipercaya oleh Institusi Terkemuka</h2>
+      <p class="client-count fade-up fade-up-delay-2">60+ klien dari berbagai sektor</p>
+      <div class="client-grid fade-up">
+        <div class="client-item">Adara Persada Mandiri, PT</div>
+        <div class="client-item">Adhi Commuter Properti, PT</div>
+        <div class="client-item">Adira Dinamika Multi Finance, Tbk., PT</div>
+        <div class="client-item">Adhi Karya (Persero), PT Tbk</div>
+        <div class="client-item">Bank Indonesia</div>
+        <div class="client-item">Balejputera Inland, PT</div>
+        <div class="client-item">Bhakti Tamara, PT</div>
+        <div class="client-item">Bosowa Corporindo, PT</div>
+        <div class="client-item">BPN Ketenagakerjaan</div>
+        <div class="client-item">British Council Indonesia</div>
+        <div class="client-item">Capitol Group</div>
+        <div class="client-item">Ciputra Development Tbk., PT</div>
+        <div class="client-item">Citra Karya Jabar Roh, PT</div>
+        <div class="client-item">Danai Indah Golf, Tbk., PT</div>
+        <div class="client-item">Dana Bagus Indonesia, PT</div>
+        <div class="client-item">Gratia Padma Investama, PT</div>
+        <div class="client-item">Hadji Kalla, PT</div>
+        <div class="client-item">Heidi Cahaya Berkat, PT (Natasha Group)</div>
+        <div class="client-item">Hem Global Utama, PT</div>
+        <div class="client-item">Indonesia Asahan Alumunium (Persero), PT</div>
+        <div class="client-item">Indec Diagnostics, PT</div>
+        <div class="client-item">Intan Pratama Properti, PT</div>
+        <div class="client-item">Jabadeeka Tbk., PT</div>
+        <div class="client-item">JG Ciputra Bukit Graha</div>
+        <div class="client-item">Kalla Inti Karsa, PT</div>
+        <div class="client-item">KAPM Kiti Properti, PT</div>
+        <div class="client-item">KSO Summarecon Serpong</div>
+        <div class="client-item">Lisco Group, PT</div>
+        <div class="client-item">Lisco Minergi Pratama, PT</div>
+        <div class="client-item">Likon Mulia Kretayasa, PT</div>
+        <div class="client-item">Likon Mulia Indah Realty, PT</div>
+        <div class="client-item">Majelis Provinsi Bangka Belitung</div>
+        <div class="client-item">Migae Hulu Jalan (Persero)d, PT</div>
+        <div class="client-item">Mitra Bangun Prasada, PT</div>
+        <div class="client-item">Mitra Gembilang Maharcipta, PT (Paradise Group)</div>
+        <div class="client-item">Mittra Properti Sulkus, PT</div>
+        <div class="client-item">Nusa Kirana Real Estate, PT</div>
+        <div class="client-item">Otoritas Jasa Keuangan</div>
+        <div class="client-item">Pamca Terang Abadi, PT</div>
+        <div class="client-item">Paramount Land, PT</div>
+        <div class="client-item">Pasar Lelong Timur, PT</div>
+        <div class="client-item">Pembangunan Jaya Ancol, Tbk., PT</div>
+        <div class="client-item">Pemda Kabupaten Aceh Tamiang</div>
+        <div class="client-item">Pemda Kabupaten Sorong</div>
+        <div class="client-item">Pemda Kota Pangkalpinang</div>
+        <div class="client-item">Pesantren Tajuddin</div>
+        <div class="client-item">Perum Perhutani</div>
+        <div class="client-item">Petrosea Tbk., PT</div>
+        <div class="client-item">Pupuk Kujang, PT</div>
+        <div class="client-item">PP Properti Tbk., PT</div>
+        <div class="client-item">Pemda Provinsi Sulawesi Selatan</div>
+        <div class="client-item">Purnomo Yusgiantoro Center</div>
+        <div class="client-item">Prolinc Logistik Tama, PT</div>
+        <div class="client-item">Sinar Geligia Bestari, PT</div>
+        <div class="client-item">Supreme Energy Muara Laboh, PT</div>
+        <div class="client-item">Surya Cipta Swadaya, PT</div>
+        <div class="client-item">Tiara Hotel Bali International, PT</div>
+        <div class="client-item">United Tractors, Tbk., PT</div>
+        <div class="client-item">Wijaya Karya Bangunan Gedung Tbk., PT</div>
+        <div class="client-item">SIKA Realty, PT</div>
+        <div class="client-item">Yayasan Bakrie Amanah</div>
+        <div class="client-item">Yayasan Kampus Penulrika Institut Ilmu Sosial dan Ilmu Politik</div>
+        <div class="client-item">Yayasan Ulkhuwah Islamiyah Rota Baru Paruhyangan</div>
+        <div class="client-item">Yayasan Universitas Katolik Paruhyangan</div>
+        <div class="client-item">Yayasan Universitas Tarumanagara</div>
+        <div class="client-item">The Ministry of Public Works and Housing (Kemen PUPR)</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       SECTION — TIMELINE
+  ══════════════════════════════════════════ -->
+  <section class="home-section" id="timeline">
+    <div class="section-indicator">
+      <div>
+        <div class="indicator-line"></div>
+        <span>Timeline</span>
+      </div>
+    </div>
+    <div class="section-content">
+      <p class="who-eyebrow fade-up">Perjalanan Kami</p>
+      <h2 class="timeline-title fade-up fade-up-delay-1">Rekam Jejak Dananjaya</h2>
+
+      <div class="timeline-scroll fade-up">
+        <div class="timeline-wrapper">
+
+      <div class="timeline-item">
+        <h3>2008</h3>
+        <div class="timeline-line">
+          <span class="timeline-dot"></span>
+        </div>
+        <ul>
+          <li>Top 10 IBC Asia Award</li>
+          <li>1st Award National Design Competition</li>
+          <li>4th Best National Design Competition</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <h3>2009</h3>
+        <div class="timeline-line">
+          <span class="timeline-dot"></span>
+        </div>
+        <ul>
+          <li>Top 10 IBC Asia Award</li>
+          <li>BCI Green Design Award</li>
+          <li>2nd Award Interior Competition</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <h3>2010</h3>
+        <div class="timeline-line">
+          <span class="timeline-dot"></span>
+        </div>
+        <ul>
+          <li>Top 10 IBC Asia Award</li>
+          <li>National Design Competition</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <h3>2011</h3>
+        <div class="timeline-line">
+          <span class="timeline-dot"></span>
+        </div>
+        <ul>
+          <li>Discovery World TMII</li>
+          <li>BCI Asia Green Award</li>
+          <li>National Design Competition</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <h3>2012</h3>
+        <div class="timeline-line">
+          <span class="timeline-dot"></span>
+        </div>
+        <ul>
+          <li>Discovery World TMII</li>
+          <li>BCI Asia Green Award</li>
+          <li>National Design Competition</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <h3>2013</h3>
+        <div class="timeline-line">
+          <span class="timeline-dot"></span>
+        </div>
+        <ul>
+          <li>Discovery World TMII</li>
+          <li>BCI Asia Green Award</li>
+          <li>National Design Competition</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <h3>2014</h3>
+        <div class="timeline-line">
+          <span class="timeline-dot"></span>
+        </div>
+        <ul>
+          <li>Discovery World TMII</li>
+          <li>BCI Asia Green Award</li>
+          <li>National Design Competition</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <h3>2015</h3>
+        <div class="timeline-line">
+          <span class="timeline-dot"></span>
+        </div>
+        <ul>
+          <li>Discovery World TMII</li>
+          <li>BCI Asia Green Award</li>
+          <li>National Design Competition</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <h3>2016</h3>
+        <div class="timeline-line">
+          <span class="timeline-dot"></span>
+        </div>
+        <ul>
+          <li>Discovery World TMII</li>
+          <li>BCI Asia Green Award</li>
+          <li>National Design Competition</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <h3>2017</h3>
+        <div class="timeline-line">
+          <span class="timeline-dot"></span>
+        </div>
+        <ul>
+          <li>Discovery World TMII</li>
+          <li>BCI Asia Green Award</li>
+          <li>National Design Competition</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <h3>2018</h3>
+        <div class="timeline-line">
+          <span class="timeline-dot"></span>
+        </div>
+        <ul>
+          <li>Discovery World TMII</li>
+          <li>BCI Asia Green Award</li>
+          <li>National Design Competition</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <h3>2019</h3>
+        <div class="timeline-line">
+          <span class="timeline-dot"></span>
+        </div>
+        <ul>
+          <li>Discovery World TMII</li>
+          <li>BCI Asia Green Award</li>
+          <li>National Design Competition</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <h3>2020</h3>
+        <div class="timeline-line">
+          <span class="timeline-dot"></span>
+        </div>
+        <ul>
+          <li>Discovery World TMII</li>
+          <li>BCI Asia Green Award</li>
+          <li>National Design Competition</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <h3>2021</h3>
+        <div class="timeline-line">
+          <span class="timeline-dot"></span>
+        </div>
+        <ul>
+          <li>Discovery World TMII</li>
+          <li>BCI Asia Green Award</li>
+          <li>National Design Competition</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <h3>2022</h3>
+        <div class="timeline-line">
+          <span class="timeline-dot"></span>
+        </div>
+        <ul>
+          <li>Discovery World TMII</li>
+          <li>BCI Asia Green Award</li>
+          <li>National Design Competition</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <h3>2023</h3>
+        <div class="timeline-line">
+          <span class="timeline-dot"></span>
+        </div>
+        <ul>
+          <li>Discovery World TMII</li>
+          <li>BCI Asia Green Award</li>
+          <li>National Design Competition</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <h3>2024</h3>
+        <div class="timeline-line">
+          <span class="timeline-dot"></span>
+        </div>
+        <ul>
+          <li>Discovery World TMII</li>
+          <li>BCI Asia Green Award</li>
+          <li>National Design Competition</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <h3>2025</h3>
+        <div class="timeline-line">
+          <span class="timeline-dot"></span>
+        </div>
+        <ul>
+          <li>Discovery World TMII</li>
+          <li>BCI Asia Green Award</li>
+          <li>National Design Competition</li>
+        </ul>
+      </div>
+    </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════════ -->
+  <footer>
+    <div class="container-fluid px-4">
+      <div class="row g-5">
+        <div class="col-lg-4">
+          <div class="footer-brand">Dananjaya<span>.</span></div>
+          <p class="footer-tagline">Interior & Architecture Studio</p>
+          <p class="mt-3" style="font-size:0.8rem;color:#666;max-width:280px;">Merancang ruang yang bermakna — dari konsep hingga eksekusi, dengan standar estetika tertinggi.</p>
+        </div>
+        <div class="col-lg-2">
+          <p style="font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:#555;margin-bottom:1rem;">Navigasi</p>
+          <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="pages/catalog.html">Catalog</a>
+            <a href="pages/package.html">Package</a>
+            <a href="pages/publicity.html">Publicity</a>
+            <a href="pages/contact.html">Contact</a>
           </div>
-          <div class="mb-3"><label class="form-label">Email</label><input type="email" class="form-control" placeholder="email@kamu.com" /></div>
-          <div class="mb-3"><label class="form-label">Nomor Telepon</label><input type="tel" class="form-control" placeholder="+62 812 xxxx xxxx" /></div>
-          <div class="mb-4"><label class="form-label">Password</label><input type="password" class="form-control" placeholder="Min. 8 karakter" /></div>
-          <button class="btn-modal-submit">Buat Akun</button>
-          <div class="auth-switch">Sudah punya akun? <a onclick="showLogin()">Masuk di sini</a></div>
+        </div>
+        <div class="col-lg-3">
+          <p style="font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:#555;margin-bottom:1rem;">Kontak</p>
+          <div class="footer-links">
+            <a href="tel:+6281234567890"><i class="bi bi-whatsapp me-2" style="color:#B68B55;"></i>+62 895 2394 1316</a>
+            <a href="mailto:hello@dananjaya.co.id"><i class="bi bi-envelope me-2" style="color:#B68B55;"></i>dananjayadesigm.com</a>
+            <a href="#"><i class="bi bi-instagram me-2" style="color:#B68B55;"></i>@dananjayadesign</a>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <p style="font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:#555;margin-bottom:1rem;">Alamat</p>
+          <p style="font-size:0.8rem;color:#666;line-height:1.7;">PT. Dananjaya Design Nusantara<br>Jl. Ganesha No.15E, Lb. Siliwangi, Kecamatan Coblong, <br>Kota Bandung, Jawa Barat <br>40132</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2024 Dananjaya. All rights reserved.</span>
+        <span>Interior & Architecture Studio</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ═══════════════════════════════════════
+       MODAL — LOGIN / REGISTER
+  ══════════════════════════════════════════ -->
+  <div class="modal fade" id="authModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered" style="max-width:400px;">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Akun Saya</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body p-0">
+          <div class="auth-tabs px-4 pt-3">
+            <button class="auth-tab active" data-tab="login">Masuk</button>
+            <button class="auth-tab" data-tab="register">Daftar</button>
+          </div>
+          <!-- Login Form -->
+          <div class="auth-form active px-4 pb-4 pt-3" id="loginForm">
+            <div class="contact-field">
+              <label>Email</label>
+              <input type="email" placeholder="nama@email.com" />
+            </div>
+            <div class="contact-field">
+              <label>Password</label>
+              <input type="password" placeholder="••••••••" />
+            </div>
+            <button class="btn-auth">Masuk</button>
+          </div>
+          <!-- Register Form -->
+          <div class="auth-form px-4 pb-4 pt-3" id="registerForm">
+            <div class="contact-field">
+              <label>Nama Lengkap</label>
+              <input type="text" placeholder="Nama Anda" />
+            </div>
+            <div class="contact-field">
+              <label>Email</label>
+              <input type="email" placeholder="nama@email.com" />
+            </div>
+            <div class="contact-field">
+              <label>Password</label>
+              <input type="password" placeholder="Min. 8 karakter" />
+            </div>
+            <button class="btn-auth">Buat Akun</button>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
- 
- 
-<!-- Scripts -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script src="js/script.js"></script>
- 
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/script.js"></script>
 </body>
 </html>

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Package — Dananjaya</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg sticky-top" id="mainNavbar">
+    <div class="container-fluid px-4">
+      <a class="navbar-brand" href="../index.html">Dananjaya<span>.</span></a>
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navCollapse">
+        <i class="bi bi-list fs-4"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navCollapse">
+        <ul class="navbar-nav mx-auto gap-1">
+          <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="catalog.html">Catalog</a></li>
+          <li class="nav-item"><a class="nav-link active" href="package.html">Package</a></li>
+          <li class="nav-item"><a class="nav-link" href="publicity.html">Publicity</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+        <div class="d-flex align-items-center gap-2">
+          <button class="nav-icon-btn position-relative" title="Shopping Cart">
+            <i class="bi bi-bag"></i>
+            <span class="cart-badge">0</span>
+          </button>
+          <div class="avatar-btn" data-bs-toggle="modal" data-bs-target="#authModal" title="Login / Register">
+            <i class="bi bi-person"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="container-fluid px-4">
+      <p class="page-hero-eyebrow">Paket Furnitur</p>
+      <h1>Package</h1>
+      <p>Solusi furnitur lengkap dalam satu paket — hemat, terkurasi, dan siap untuk ruang Anda.</p>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div class="container-fluid px-4 py-2">
+    <div class="filter-bar">
+      <div class="search-wrap">
+        <i class="bi bi-search"></i>
+        <input type="text" id="searchInput" placeholder="Cari paket..." />
+      </div>
+      <div class="cat-filters">
+        <button class="cat-btn active" data-cat="all">All</button>
+        <button class="cat-btn" data-cat="kursi">Kursi</button>
+        <button class="cat-btn" data-cat="meja">Meja</button>
+        <button class="cat-btn" data-cat="lemari">Lemari</button>
+        <button class="cat-btn" data-cat="sofa">Sofa</button>
+      </div>
+    </div>
+
+    <div class="catalog-grid">
+
+      <div class="package-card" data-category="kursi">
+        <div class="package-img-wrap">
+          <div class="card-img-placeholder"><i class="bi bi-box-seam fs-2" style="color:#c0bbb5;"></i></div>
+        </div>
+        <div class="package-body">
+          <p class="pkg-jenis">Paket Kursi</p>
+          <p class="pkg-name">Paket 500 3d Model Kursi</p>
+          <p class="pkg-price"><i class="bi bi-tag"></i> Rp 100.000</p>
+          <p class="pkg-desc">Koleksi lengkap 500 model kursi 3D siap pakai untuk kebutuhan desain interior dan presentasi profesional.</p>
+          <div class="card-arrow"><i class="bi bi-arrow-up-right"></i></div>
+        </div>
+      </div>
+
+      <div class="package-card" data-category="kursi">
+        <div class="package-img-wrap">
+          <div class="card-img-placeholder"><i class="bi bi-box-seam fs-2" style="color:#c0bbb5;"></i></div>
+        </div>
+        <div class="package-body">
+          <p class="pkg-jenis">Paket Kursi</p>
+          <p class="pkg-name">Paket 300 3d Model Kursi Premium</p>
+          <p class="pkg-price"><i class="bi bi-tag"></i> Rp 75.000</p>
+          <p class="pkg-desc">300 model kursi premium berkualitas tinggi dengan tekstur realistis, cocok untuk render arsitektur.</p>
+          <div class="card-arrow"><i class="bi bi-arrow-up-right"></i></div>
+        </div>
+      </div>
+
+      <div class="package-card" data-category="meja">
+        <div class="package-img-wrap">
+          <div class="card-img-placeholder"><i class="bi bi-box-seam fs-2" style="color:#c0bbb5;"></i></div>
+        </div>
+        <div class="package-body">
+          <p class="pkg-jenis">Paket Meja</p>
+          <p class="pkg-name">Paket 500 3d Model Meja</p>
+          <p class="pkg-price"><i class="bi bi-tag"></i> Rp 100.000</p>
+          <p class="pkg-desc">Koleksi 500 model meja 3D berbagai gaya — minimalis, klasik, hingga industrial untuk semua kebutuhan.</p>
+          <div class="card-arrow"><i class="bi bi-arrow-up-right"></i></div>
+        </div>
+      </div>
+
+      <div class="package-card" data-category="meja">
+        <div class="package-img-wrap">
+          <div class="card-img-placeholder"><i class="bi bi-box-seam fs-2" style="color:#c0bbb5;"></i></div>
+        </div>
+        <div class="package-body">
+          <p class="pkg-jenis">Paket Meja</p>
+          <p class="pkg-name">Paket Bundle Meja & Kursi</p>
+          <p class="pkg-price"><i class="bi bi-tag"></i> Rp 150.000</p>
+          <p class="pkg-desc">Paket hemat kombinasi meja dan kursi — lebih dari 800 model 3D dalam satu paket lengkap.</p>
+          <div class="card-arrow"><i class="bi bi-arrow-up-right"></i></div>
+        </div>
+      </div>
+
+      <div class="package-card" data-category="lemari">
+        <div class="package-img-wrap">
+          <div class="card-img-placeholder"><i class="bi bi-box-seam fs-2" style="color:#c0bbb5;"></i></div>
+        </div>
+        <div class="package-body">
+          <p class="pkg-jenis">Paket Lemari</p>
+          <p class="pkg-name">Paket 200 3d Model Lemari</p>
+          <p class="pkg-price"><i class="bi bi-tag"></i> Rp 80.000</p>
+          <p class="pkg-desc">200 model lemari dan storage unit 3D — wardrobe, kabinet, rak buku, dan lemari pajang.</p>
+          <div class="card-arrow"><i class="bi bi-arrow-up-right"></i></div>
+        </div>
+      </div>
+
+      <div class="package-card" data-category="sofa">
+        <div class="package-img-wrap">
+          <div class="card-img-placeholder"><i class="bi bi-box-seam fs-2" style="color:#c0bbb5;"></i></div>
+        </div>
+        <div class="package-body">
+          <p class="pkg-jenis">Paket Sofa</p>
+          <p class="pkg-name">Paket 500 3d Model Sofa</p>
+          <p class="pkg-price"><i class="bi bi-tag"></i> Rp 100.000</p>
+          <p class="pkg-desc">Koleksi lengkap sofa dan seating 3D — dari single seater hingga sectional sofa mewah.</p>
+          <div class="card-arrow"><i class="bi bi-arrow-up-right"></i></div>
+        </div>
+      </div>
+
+      <div class="package-card" data-category="kursi">
+        <div class="package-img-wrap">
+          <div class="card-img-placeholder"><i class="bi bi-box-seam fs-2" style="color:#c0bbb5;"></i></div>
+        </div>
+        <div class="package-body">
+          <p class="pkg-jenis">Paket Kursi</p>
+          <p class="pkg-name">Paket Kursi Outdoor Series</p>
+          <p class="pkg-price"><i class="bi bi-tag"></i> Rp 65.000</p>
+          <p class="pkg-desc">150 model kursi outdoor dan taman — rotan, metal, kayu, dan plastik untuk area eksterior.</p>
+          <div class="card-arrow"><i class="bi bi-arrow-up-right"></i></div>
+        </div>
+      </div>
+
+      <div class="package-card" data-category="sofa">
+        <div class="package-img-wrap">
+          <div class="card-img-placeholder"><i class="bi bi-box-seam fs-2" style="color:#c0bbb5;"></i></div>
+        </div>
+        <div class="package-body">
+          <p class="pkg-jenis">Paket Sofa</p>
+          <p class="pkg-name">Paket Sofa & Ottoman Combo</p>
+          <p class="pkg-price"><i class="bi bi-tag"></i> Rp 120.000</p>
+          <p class="pkg-desc">Paket spesial sofa dan ottoman — 350 kombinasi model untuk living room yang lengkap dan elegan.</p>
+          <div class="card-arrow"><i class="bi bi-arrow-up-right"></i></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container-fluid px-4">
+      <div class="row g-5">
+        <div class="col-lg-4">
+          <div class="footer-brand">Dananjaya<span>.</span></div>
+          <p class="footer-tagline">Interior & Architecture Studio</p>
+          <p class="mt-3" style="font-size:0.8rem;color:#666;max-width:280px;">Merancang ruang yang bermakna — dari konsep hingga eksekusi, dengan standar estetika tertinggi.</p>
+        </div>
+        <div class="col-lg-2">
+          <p style="font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:#555;margin-bottom:1rem;">Navigasi</p>
+          <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="pages/catalog.html">Catalog</a>
+            <a href="pages/package.html">Package</a>
+            <a href="pages/publicity.html">Publicity</a>
+            <a href="pages/contact.html">Contact</a>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <p style="font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:#555;margin-bottom:1rem;">Kontak</p>
+          <div class="footer-links">
+            <a href="tel:+6281234567890"><i class="bi bi-whatsapp me-2" style="color:#B68B55;"></i>+62 895 2394 1316</a>
+            <a href="mailto:hello@dananjaya.co.id"><i class="bi bi-envelope me-2" style="color:#B68B55;"></i>dananjayadesigm.com</a>
+            <a href="#"><i class="bi bi-instagram me-2" style="color:#B68B55;"></i>@dananjayadesign</a>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <p style="font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:#555;margin-bottom:1rem;">Alamat</p>
+          <p style="font-size:0.8rem;color:#666;line-height:1.7;">PT. Dananjaya Design Nusantara<br>Jl. Ganesha No.15E, Lb. Siliwangi, Kecamatan Coblong, <br>Kota Bandung, Jawa Barat <br>40132</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2024 Dananjaya. All rights reserved.</span>
+        <span>Interior & Architecture Studio</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- AUTH MODAL -->
+  <div class="modal fade" id="authModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered" style="max-width:400px;">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Akun Saya</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body p-0">
+          <div class="auth-tabs px-4 pt-3">
+            <button class="auth-tab active" data-tab="login">Masuk</button>
+            <button class="auth-tab" data-tab="register">Daftar</button>
+          </div>
+          <div class="auth-form active px-4 pb-4 pt-3" id="loginForm">
+            <div class="contact-field"><label>Email</label><input type="email" placeholder="nama@email.com" /></div>
+            <div class="contact-field"><label>Password</label><input type="password" placeholder="••••••••" /></div>
+            <button class="btn-auth">Masuk</button>
+          </div>
+          <div class="auth-form px-4 pb-4 pt-3" id="registerForm">
+            <div class="contact-field"><label>Nama Lengkap</label><input type="text" placeholder="Nama Anda" /></div>
+            <div class="contact-field"><label>Email</label><input type="email" placeholder="nama@email.com" /></div>
+            <div class="contact-field"><label>Password</label><input type="password" placeholder="Min. 8 karakter" /></div>
+            <button class="btn-auth">Buat Akun</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../js/script.js"></script>
+</body>
+</html>

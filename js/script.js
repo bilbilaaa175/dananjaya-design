@@ -1,155 +1,147 @@
-document.addEventListener('DOMContentLoaded', function () {
+/* ============================================================
+   DANANJAYA — Interior & Architecture
+   script.js
+   ============================================================ */
 
-  // ── 1. NAVBAR: tambah class 'scrolled' saat scroll ──
-  const navbar = document.getElementById('navbar');
-  function handleScroll() {
-    navbar.classList.toggle('scrolled', window.scrollY > 80);
+document.addEventListener('DOMContentLoaded', () => {
+
+  /* ── Navbar scroll shadow ─────────────────────────────── */
+  const navbar = document.getElementById('mainNavbar');
+  if (navbar) {
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 20);
+    });
   }
-  window.addEventListener('scroll', handleScroll, { passive: true });
-  handleScroll();
 
+  /* ── Active nav link ──────────────────────────────────── */
+  const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+  document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
+    const href = link.getAttribute('href') || '';
+    if (href === currentPath || (currentPath === '' && href === 'index.html')) {
+      link.classList.add('active');
+    }
+  });
 
-  // ── 2. SMOOTH SCROLL untuk semua anchor link ──
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      const target = document.querySelector(this.getAttribute('href'));
-      if (!target) return;
-      e.preventDefault();
-      const offset = navbar.offsetHeight + 16;
-      const top = target.getBoundingClientRect().top + window.scrollY - offset;
-      window.scrollTo({ top, behavior: 'smooth' });
-      // Tutup navbar mobile kalau terbuka
-      const navCollapse = document.getElementById('navMenu');
-      if (navCollapse && navCollapse.classList.contains('show')) {
-        bootstrap.Collapse.getInstance(navCollapse)?.hide();
-      }
+  /* ── Auth Modal tabs ──────────────────────────────────── */
+  document.querySelectorAll('.auth-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      const target = tab.dataset.tab;
+      document.querySelectorAll('.auth-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.auth-form').forEach(f => f.classList.remove('active'));
+      tab.classList.add('active');
+      const form = document.getElementById(target + 'Form');
+      if (form) form.classList.add('active');
     });
   });
 
+  /* ── HOME: Intersection Observer for sub-nav ─────────── */
+  if (document.getElementById('homeSubNav')) {
+    const sections = document.querySelectorAll('.home-section[id]');
+    const subLinks = document.querySelectorAll('.sub-nav-list a');
 
-  // ── 3. AUTH MODAL: switch Login ↔ Register ──
-  const loginView    = document.getElementById('loginView');
-  const registerView = document.getElementById('registerView');
-  const modalTitle   = document.getElementById('authModalTitle');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id;
+          subLinks.forEach(link => {
+            link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+          });
+        }
+      });
+    }, {
+      rootMargin: '-118px 0px -60% 0px',
+      threshold: 0
+    });
 
-  window.showRegister = function () {
-    loginView.classList.add('d-none');
-    registerView.classList.remove('d-none');
-    modalTitle.textContent = 'Buat Akun';
-  };
-
-  window.showLogin = function () {
-    registerView.classList.add('d-none');
-    loginView.classList.remove('d-none');
-    modalTitle.textContent = 'Masuk';
-  };
-
-  const authModal = document.getElementById('authModal');
-  if (authModal) {
-    authModal.addEventListener('show.bs.modal', () => showLogin());
+    sections.forEach(s => observer.observe(s));
   }
 
-
-  // ── 4. ACTIVE NAV LINK saat scroll ──
-  const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('#navbar .nav-link[href^="#"]');
-
-  function updateActiveNav() {
-    let current = '';
-    sections.forEach(section => {
-      const top = section.offsetTop - navbar.offsetHeight - 40;
-      if (window.scrollY >= top) current = section.id;
-    });
-    navLinks.forEach(link => {
-      link.classList.toggle('active', link.getAttribute('href') === '#' + current);
-    });
+  /* ── HOME: Fade-up on scroll ──────────────────────────── */
+  const fadeEls = document.querySelectorAll('.fade-up');
+  if (fadeEls.length) {
+    const fadeObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          fadeObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    fadeEls.forEach(el => fadeObserver.observe(el));
   }
-  window.addEventListener('scroll', updateActiveNav, { passive: true });
 
-
-  // ── 5. FADE-UP saat scroll ──
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12 });
-
-  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-
-  // ── 6. CATALOG — Cinematic full-width carousel ──
-  const totalSlides = 5;
-  const catalogSwiper = new Swiper('.catalog-hero-swiper', {
-    loop: true,
-    speed: 900,
-    effect: 'fade',
-    fadeEffect: { crossFade: true },
-    navigation: { prevEl: '#cat-prev', nextEl: '#cat-next' },
-    on: {
-      slideChange: function () {
-        const idx = this.realIndex;
-        // Update progress bar
-        document.getElementById('cat-progress').style.width =
-          ((idx + 1) / totalSlides * 100) + '%';
-        // Update thumbnail aktif
-        document.querySelectorAll('.catalog-thumb').forEach((t, i) => {
-          t.classList.toggle('active', i === idx);
+  /* ── TEAM: Division filter ────────────────────────────── */
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const teamCards = document.querySelectorAll('.team-card');
+  if (filterBtns.length && teamCards.length) {
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const div = btn.dataset.division;
+        teamCards.forEach(card => {
+          const show = div === 'all' || card.dataset.division === div;
+          card.style.display = show ? '' : 'none';
         });
-      },
-      init: function () {
-        document.getElementById('cat-progress').style.width =
-          (1 / totalSlides * 100) + '%';
-      }
-    }
-  });
-
-  // Klik thumbnail → pindah slide
-  document.querySelectorAll('.catalog-thumb').forEach(thumb => {
-    thumb.addEventListener('click', function () {
-      catalogSwiper.slideToLoop(parseInt(this.dataset.index));
+      });
     });
-  });
+  }
 
+  /* ── CATALOG / PACKAGE / PUBLICITY: Category filter ──── */
+  const catBtns = document.querySelectorAll('.cat-btn');
+  const filterableCards = document.querySelectorAll('[data-category]');
+  if (catBtns.length && filterableCards.length) {
+    catBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        catBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const cat = btn.dataset.cat;
+        filterableCards.forEach(card => {
+          const show = cat === 'all' || card.dataset.category === cat;
+          card.style.display = show ? '' : 'none';
+        });
+      });
+    });
+  }
 
-  // ── 7. PAKET slider ──
-  new Swiper('.paket-swiper', {
-    slidesPerView: 1.1,
-    spaceBetween: 16,
-    grabCursor: true,
-    navigation: { prevEl: '#paket-prev', nextEl: '#paket-next' },
-    pagination: { el: '#paket-pag', clickable: true },
-    breakpoints: {
-      576: { slidesPerView: 1.5, spaceBetween: 20 },
-      768: { slidesPerView: 2,   spaceBetween: 24 },
-      992: { slidesPerView: 3,   spaceBetween: 28 },
-    }
-  });
+  /* ── Search functionality ─────────────────────────────── */
+  const searchInput = document.getElementById('searchInput');
+  if (searchInput) {
+    searchInput.addEventListener('input', () => {
+      const q = searchInput.value.toLowerCase().trim();
+      filterableCards.forEach(card => {
+        const text = card.textContent.toLowerCase();
+        const catActive = document.querySelector('.cat-btn.active');
+        const catFilter = catActive ? catActive.dataset.cat : 'all';
+        const matchesCat = catFilter === 'all' || card.dataset.category === catFilter;
+        const matchesQ   = q === '' || text.includes(q);
+        card.style.display = (matchesCat && matchesQ) ? '' : 'none';
+      });
+    });
+  }
 
+  /* ── Contact: WhatsApp form ───────────────────────────── */
+  const contactForm = document.getElementById('contactForm');
+  if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name  = document.getElementById('contactName').value;
+      const email = document.getElementById('contactEmail').value;
+      const phone = document.getElementById('contactPhone').value;
+      const msg = `Halo Dananjaya!%0ANama: ${encodeURIComponent(name)}%0AEmail: ${encodeURIComponent(email)}%0APhone: ${encodeURIComponent(phone)}`;
+      window.open(`https://wa.me/6281234567890?text=${msg}`, '_blank');
+    });
+  }
 
-  // ── 8. PUBLICITY slider ──
-  new Swiper('.pub-swiper', {
-    slidesPerView: 1.2,
-    spaceBetween: 12,
-    grabCursor: true,
-    navigation: { prevEl: '#pub-prev', nextEl: '#pub-next' },
-    pagination: { el: '#pub-pag', clickable: true },
-    breakpoints: {
-      576: { slidesPerView: 2,   spaceBetween: 16 },
-      768: { slidesPerView: 2.5, spaceBetween: 16 },
-      992: { slidesPerView: 3.5, spaceBetween: 20 },
-    }
-  });
-
-
-  // ── 9. FILTER TABS (Publicity) ──
-  document.querySelectorAll('.filter-btn').forEach(btn => {
-    btn.addEventListener('click', function () {
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-      this.classList.add('active');
-      // TODO: tambah logika filter konten di sini nanti
+  /* ── Cart button pulse ────────────────────────────────── */
+  const cartBtns = document.querySelectorAll('.btn-cart');
+  cartBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const navCart = document.querySelector('.nav-icon-btn .bi-bag');
+      if (navCart) {
+        navCart.parentElement.style.transform = 'scale(1.2)';
+        setTimeout(() => navCart.parentElement.style.transform = '', 200);
+      }
     });
   });
 
