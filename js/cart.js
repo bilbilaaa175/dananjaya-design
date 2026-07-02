@@ -8,13 +8,20 @@ import { getUser } from './auth.js';
 // Cart disimpan di memory selama sesi berlangsung
 let localCart = [];
 
-// ── Update badge angka di icon cart ──
+// ── Update badge angka di icon cart (jumlah produk unik) ──
 export function updateCartBadge() {
-  const total = localCart.reduce((sum, item) => sum + item.quantity, 0);
+  const total = localCart.length;
   document.querySelectorAll('#cartBadge').forEach(badge => {
     badge.textContent = total;
     badge.style.display = total > 0 ? 'flex' : 'none';
   });
+}
+
+// ── Update cart item count label ──
+function updateCartCount() {
+  const countEl = document.getElementById('cartItemCount');
+  if (!countEl) return;
+  countEl.textContent = `${localCart.length} item`;
 }
 
 // ── Load cart dari Supabase (saat login) ──
@@ -29,6 +36,7 @@ export async function loadCart(userId) {
 
   localCart = data || [];
   updateCartBadge();
+  updateCartCount();
 }
 
 // ── Tambah produk ke cart ──
@@ -46,7 +54,9 @@ export async function addToCart({ productId, productName, productPrice, productI
   const existing = localCart.find(item => item.product_id === productId);
 
   if (existing) {
+    // Produk sudah ada — update quantity saja, jangan push baru
     await updateQuantity(productId, existing.quantity + 1);
+    showCartToast(productName);
     return;
   }
 
@@ -69,6 +79,7 @@ export async function addToCart({ productId, productName, productPrice, productI
 
   localCart.push(data);
   updateCartBadge();
+  updateCartCount();
   showCartToast(productName);
 }
 
@@ -90,10 +101,12 @@ export async function updateQuantity(productId, newQuantity) {
 
   if (error) { console.error('Update quantity error:', error); return; }
 
+  // Update localCart dulu sebelum render
   const item = localCart.find(i => i.product_id === productId);
   if (item) item.quantity = newQuantity;
 
   updateCartBadge();
+  updateCartCount();
   renderCartDropdown();
 }
 
@@ -112,6 +125,7 @@ export async function removeFromCart(productId) {
 
   localCart = localCart.filter(i => i.product_id !== productId);
   updateCartBadge();
+  updateCartCount();
   renderCartDropdown();
 }
 
@@ -119,6 +133,7 @@ export async function removeFromCart(productId) {
 export function clearLocalCart() {
   localCart = [];
   updateCartBadge();
+  updateCartCount();
 }
 
 // ── Hitung total harga ──
@@ -133,14 +148,6 @@ export function formatRupiah(number) {
     currency: 'IDR',
     minimumFractionDigits: 0
   }).format(number);
-}
-
-// ── Update cart item count label ──
-function updateCartCount() {
-  const countEl = document.getElementById('cartItemCount');
-  if (!countEl) return;
-  const total = localCart.reduce((sum, item) => sum + item.quantity, 0);
-  countEl.textContent = `${total} item`;
 }
 
 // ── Render isi cart di dropdown ──
