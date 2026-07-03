@@ -8,6 +8,9 @@ import { getUser } from './auth.js';
 // Cart disimpan di memory selama sesi berlangsung
 let localCart = [];
 
+// Set untuk menyimpan product_id yang dicentang
+let checkedItems = new Set();
+
 // ── Update badge angka di icon cart (jumlah produk unik) ──
 export function updateCartBadge() {
   const total = localCart.length;
@@ -23,6 +26,43 @@ function updateCartCount() {
   if (!countEl) return;
   countEl.textContent = `${localCart.length} item`;
 }
+
+// ── Hitung total harga berdasarkan yang dicentang ──
+function getCheckedTotal() {
+  return localCart
+    .filter(item => checkedItems.has(item.product_id))
+    .reduce((sum, item) => sum + (item.product_price * item.quantity), 0);
+}
+
+// ── Update state tombol checkout ──
+function updateCheckoutBtn() {
+  const checkoutBtn = document.getElementById('checkoutBtn');
+  if (!checkoutBtn) return;
+  checkoutBtn.disabled = checkedItems.size === 0;
+  checkoutBtn.style.opacity = checkedItems.size === 0 ? '0.5' : '1';
+}
+
+// ── Toggle centang satu item ──
+window.cartToggleCheck = function(productId) {
+  if (checkedItems.has(productId)) {
+    checkedItems.delete(productId);
+  } else {
+    checkedItems.add(productId);
+  }
+  const totalEl = document.getElementById('cartTotal');
+  if (totalEl) totalEl.textContent = formatRupiah(getCheckedTotal());
+  updateCheckoutBtn();
+};
+
+// ── Toggle centang semua item ──
+window.cartToggleAll = function(checkbox) {
+  if (checkbox.checked) {
+    localCart.forEach(item => checkedItems.add(item.product_id));
+  } else {
+    checkedItems.clear();
+  }
+  renderCartDropdown();
+};
 
 // ── Load cart dari Supabase (saat login) ──
 export async function loadCart(userId) {
@@ -124,6 +164,7 @@ export async function removeFromCart(productId) {
   if (error) { console.error('Remove from cart error:', error); return; }
 
   localCart = localCart.filter(i => i.product_id !== productId);
+  checkedItems.delete(productId); // hapus dari checkedItems juga
   updateCartBadge();
   updateCartCount();
   renderCartDropdown();
@@ -132,13 +173,9 @@ export async function removeFromCart(productId) {
 // ── Kosongkan cart lokal (saat logout) ──
 export function clearLocalCart() {
   localCart = [];
+  checkedItems.clear();
   updateCartBadge();
   updateCartCount();
-}
-
-// ── Hitung total harga ──
-export function getCartTotal() {
-  return localCart.reduce((sum, item) => sum + (item.product_price * item.quantity), 0);
 }
 
 // ── Format harga ke Rupiah ──
@@ -164,32 +201,52 @@ export function renderCartDropdown() {
       </div>`;
     if (totalEl) totalEl.textContent = formatRupiah(0);
     updateCartCount();
+    updateCheckoutBtn();
     return;
   }
 
-  container.innerHTML = localCart.map(item => `
-    <div class="cart-item">
-      <div class="cart-item-info">
-        <p class="mb-0" style="font-size:0.85rem;font-weight:600;color:var(--black)">${item.product_name}</p>
-        <p class="mb-0" style="font-size:0.75rem;color:var(--wood)">${formatRupiah(item.product_price)}</p>
-      </div>
-      <div class="d-flex align-items-center gap-1">
-        <button class="btn-qty" onclick="window.cartUpdateQty('${item.product_id}', ${item.quantity - 1})">
-          <i class="bi bi-dash"></i>
-        </button>
-        <span style="font-size:0.85rem;font-weight:600;min-width:20px;text-align:center">${item.quantity}</span>
-        <button class="btn-qty" onclick="window.cartUpdateQty('${item.product_id}', ${item.quantity + 1})">
-          <i class="bi bi-plus"></i>
-        </button>
-      </div>
-      <button class="btn-qty text-danger" onclick="window.cartRemove('${item.product_id}')">
-        <i class="bi bi-trash"></i>
-      </button>
-    </div>
-  `).join('');
+  const allChecked = localCart.length > 0 &&
+    localCart.every(item => checkedItems.has(item.product_id));
 
-  if (totalEl) totalEl.textContent = formatRupiah(getCartTotal());
+  container.innerHTML = `
+    <div class="cart-select-all">
+      <label class="cart-check-label">
+        <input type="checkbox"
+          onchange="window.cartToggleAll(this)"
+          ${allChecked ? 'checked' : ''} />
+        <span>Pilih Semua</span>
+      </label>
+    </div>
+
+    ${localCart.map(item => `
+      <div class="cart-item">
+        <label class="cart-check-label">
+          <input type="checkbox"
+            onchange="window.cartToggleCheck('${item.product_id}')"
+            ${checkedItems.has(item.product_id) ? 'checked' : ''} />
+        </label>
+        <div class="cart-item-info">
+          <p class="mb-0" style="font-size:0.85rem;font-weight:600;color:var(--black)">${item.product_name}</p>
+          <p class="mb-0" style="font-size:0.75rem;color:var(--wood)">${formatRupiah(item.product_price)}</p>
+        </div>
+        <div class="d-flex align-items-center gap-1">
+          <button class="btn-qty" onclick="window.cartUpdateQty('${item.product_id}', ${item.quantity - 1})">
+            <i class="bi bi-dash"></i>
+          </button>
+          <span style="font-size:0.85rem;font-weight:600;min-width:20px;text-align:center">${item.quantity}</span>
+          <button class="btn-qty" onclick="window.cartUpdateQty('${item.product_id}', ${item.quantity + 1})">
+            <i class="bi bi-plus"></i>
+          </button>
+        </div>
+        <button class="btn-qty text-danger" onclick="window.cartRemove('${item.product_id}')">
+          <i class="bi bi-trash"></i>
+        </button>
+      </div>
+    `).join('')}`;
+
+  if (totalEl) totalEl.textContent = formatRupiah(getCheckedTotal());
   updateCartCount();
+  updateCheckoutBtn();
 }
 
 // ── Toast notifikasi ──
@@ -211,6 +268,15 @@ function showCartToast(productName) {
 
   document.body.appendChild(toast);
   setTimeout(() => toast.remove(), 2500);
+}
+
+export function getLocalCart() {
+  return localCart;
+}
+
+// ── Ambil hanya item yang dicentang ──
+export function getCheckedCartItems() {
+  return localCart.filter(item => checkedItems.has(item.product_id));
 }
 
 // ── Expose ke window untuk onclick di HTML ──

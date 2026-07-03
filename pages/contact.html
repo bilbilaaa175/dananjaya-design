@@ -46,7 +46,9 @@
                 <span style="font-size:0.82rem;color:var(--mid-gray)">Total</span>
                 <span id="cartTotal" style="font-weight:700;color:var(--black)">Rp 0</span>
               </div>
-              <button class="btn-checkout w-100">
+              <button class="btn-checkout w-100" id="checkoutBtn" 
+                disabled style="opacity:0.5"
+                data-bs-toggle="modal" data-bs-target="#checkoutModal">
                 <i class="bi bi-bag-check me-2"></i>Checkout
               </button>
             </div>
@@ -240,6 +242,122 @@
         </form>
 
       </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ CHECKOUT MODAL ════════ -->
+<div class="modal fade" id="checkoutModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
+    <div class="modal-content checkout-modal-content">
+
+      <div class="modal-header checkout-modal-header">
+        <div>
+          <p class="page-hero-eyebrow mb-1">Konfirmasi Pesanan</p>
+          <h5 class="modal-title checkout-heading" style="font-size:1.4rem">Checkout</h5>
+        </div>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <div class="modal-body p-0">
+        <div class="row g-0">
+
+          <!-- Kolom kiri — Form -->
+          <div class="col-lg-7 checkout-modal-left">
+
+            <!-- Informasi Penerima -->
+            <div class="checkout-section">
+              <div class="checkout-section-header">
+                <i class="bi bi-person-lines-fill"></i>
+                <h6>Informasi Penerima</h6>
+              </div>
+              <form id="checkoutForm" novalidate>
+                <div class="row g-3">
+                  <div class="col-12">
+                    <label class="checkout-label">Nama Lengkap</label>
+                    <input type="text" id="recipientName" class="checkout-input" placeholder="Masukkan nama lengkap" required />
+                  </div>
+                  <div class="col-md-6">
+                    <label class="checkout-label">Nomor HP</label>
+                    <input type="tel" id="recipientPhone" class="checkout-input" placeholder="+62 812 xxxx xxxx" required />
+                  </div>
+                  <div class="col-md-6">
+                    <label class="checkout-label">Email</label>
+                    <input type="email" id="recipientEmail" class="checkout-input" placeholder="nama@email.com" required />
+                  </div>
+                  <div class="col-12">
+                    <label class="checkout-label">Alamat Lengkap</label>
+                    <textarea id="recipientAddress" class="checkout-input" rows="2" placeholder="Jalan, nomor rumah, RT/RW, kelurahan, kecamatan" required></textarea>
+                  </div>
+                  <div class="col-md-4">
+                    <label class="checkout-label">Kota</label>
+                    <input type="text" id="recipientCity" class="checkout-input" placeholder="Bandung" required />
+                  </div>
+                  <div class="col-md-4">
+                    <label class="checkout-label">Provinsi</label>
+                    <input type="text" id="recipientProvince" class="checkout-input" placeholder="Jawa Barat" required />
+                  </div>
+                  <div class="col-md-4">
+                    <label class="checkout-label">Kode Pos</label>
+                    <input type="text" id="recipientZip" class="checkout-input" placeholder="40132" required />
+                  </div>
+                </div>
+              </form>
+            </div>
+
+            <!-- Catatan Pesanan -->
+            <div class="checkout-section">
+              <div class="checkout-section-header">
+                <i class="bi bi-chat-left-text"></i>
+                <h6>Catatan Pesanan</h6>
+              </div>
+              <textarea id="orderNote" class="checkout-input" rows="3"
+                        placeholder="Tulis catatan apabila ada permintaan khusus."></textarea>
+            </div>
+
+          </div>
+
+          <!-- Kolom kanan — Ringkasan -->
+          <div class="col-lg-5 checkout-modal-right">
+            <div class="checkout-section-header">
+              <i class="bi bi-receipt"></i>
+              <h6>Ringkasan Pesanan</h6>
+            </div>
+
+            <!-- Item list -->
+            <div id="summaryItems"></div>
+
+            <div class="checkout-divider"></div>
+
+            <div class="summary-row">
+              <span>Subtotal</span>
+              <span id="summarySubtotal">Rp 0</span>
+            </div>
+            <div class="summary-row">
+              <span>Ongkir</span>
+              <span id="summaryShipping" class="summary-free">Gratis</span>
+            </div>
+
+            <div class="checkout-divider"></div>
+
+            <div class="summary-row summary-total">
+              <span>Total</span>
+              <span id="summaryTotal">Rp 0</span>
+            </div>
+
+            <button class="btn-pay w-100" id="btnPay" onclick="handlePay()">
+              <i class="bi bi-lock me-2"></i>Bayar Sekarang
+            </button>
+
+            <p class="checkout-secure-note">
+              <i class="bi bi-shield-check me-1"></i>
+              Pembayaran aman melalui Midtrans
+            </p>
+          </div>
+
+        </div>
+      </div>
+
     </div>
   </div>
 </div>

@@ -181,6 +181,32 @@ p  { font-size: 1rem; line-height: 1.8; color: var(--dark-gray); }
   text-overflow: ellipsis; 
 }
 
+/* ── Cart Checkbox ── */
+.cart-select-all {
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--light-gray);
+  background: var(--off-white);
+}
+
+.cart-check-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--dark-gray);
+  user-select: none;
+}
+
+.cart-check-label input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--wood);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
 /* Tombol +/- quantity */
 .btn-qty {
   width: 26px; height: 26px;
@@ -299,8 +325,8 @@ p  { font-size: 1rem; line-height: 1.8; color: var(--dark-gray); }
    ════════════════════════════════════════ */
 #hero {
   position: relative;
-  height: 100vh;
-  min-height: 600px;
+  height: 120vh;
+  min-height: 700px;
   display: flex;
   align-items: flex-end;
   padding-bottom: 72px;
@@ -324,10 +350,10 @@ p  { font-size: 1rem; line-height: 1.8; color: var(--dark-gray); }
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
+  object-position: center bottom ;
 }
 
-/* Overlay gelap di atas foto */
+/* Overlay gelap di atas foto
 .hero-bg .carousel-item::after {
   content: '';
   position: absolute;
@@ -338,7 +364,7 @@ p  { font-size: 1rem; line-height: 1.8; color: var(--dark-gray); }
     rgba(28,28,26,0.30) 55%,
     rgba(28,28,26,0.10) 100%
   );
-}
+} */
 
 /* Indicators — posisi tengah*/
 .hero-bg .carousel-indicators {
@@ -348,22 +374,33 @@ p  { font-size: 1rem; line-height: 1.8; color: var(--dark-gray); }
   justify-content: center;
   margin: 0;
   padding: 0;
+  z-index: 10;
 }
 
 .hero-bg .carousel-indicators button {
   width: 24px;
   height: 3px;
-  border-radius: 0;
-  background: rgba(255,255,255,0.4);
+  border-radius: 5px;
+  background: rgba(255,255,255,0.75);
   border: none;
-  transition: all 0.3s;
+  margin: 0 4px;
+   box-shadow: 0 1px 6px rgba(0,0,0,.35);
   opacity: 1;
   transition: all 0.3s ease;
 }
 
 .hero-bg .carousel-indicators button.active {
   width: 40px;
-  background: var(--accent);
+  background: rgba(0,0,0,.45);
+}
+
+.hero-bg .carousel-control-prev-icon,
+.hero-bg .carousel-control-next-icon{
+    width:48px;
+    height:48px;
+    background-size:22px;
+    background-color:rgba(0,0,0,.45);
+    border-radius:50%;
 }
 
 /* Konten hero harus di atas carousel */
@@ -1305,4 +1342,145 @@ footer {
   .catalog-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
   .filter-bar { gap: 1rem; }
   .client-grid { grid-template-columns: 1fr 1fr; }
+}
+
+/* ── Checkout Modal ── */
+.checkout-modal-content {
+  border: none;
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.checkout-modal-header {
+  background: var(--white);
+  border-bottom: 1px solid var(--light-gray);
+  padding: 20px 28px;
+  align-items: flex-start;
+}
+
+.checkout-modal-left {
+  padding: 28px;
+  border-right: 1px solid var(--light-gray);
+  overflow-y: auto;
+  max-height: 75vh;
+}
+
+.checkout-modal-right {
+  padding: 28px;
+  background: var(--off-white);
+  overflow-y: auto;
+  max-height: 75vh;
+}
+
+.checkout-section { margin-bottom: 28px; }
+
+.checkout-section-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--light-gray);
+}
+
+.checkout-section-header i { color: var(--wood); font-size: 0.95rem; }
+
+.checkout-section-header h6 {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--black);
+  margin: 0;
+  letter-spacing: 0.04em;
+}
+
+.checkout-label {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--dark-gray);
+  margin-bottom: 6px;
+}
+
+.checkout-input {
+  width: 100%;
+  padding: 10px 13px;
+  border: 1.5px solid var(--light-gray);
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  font-family: var(--font-body);
+  color: var(--black);
+  background: var(--white);
+  transition: border-color var(--transition), box-shadow var(--transition);
+  outline: none;
+  resize: none;
+}
+
+.checkout-input:focus {
+  border-color: var(--wood);
+  box-shadow: 0 0 0 3px rgba(182,139,85,0.1);
+}
+
+.checkout-input::placeholder { color: var(--mid-gray); }
+
+.summary-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--light-gray);
+}
+.summary-item:last-child { border-bottom: none; }
+
+.summary-item-thumb {
+  width: 48px; height: 48px;
+  border-radius: var(--radius-sm);
+  background: var(--light-gray);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+.summary-item-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.summary-item-thumb i { font-size: 1.1rem; color: var(--mid-gray); }
+
+.summary-item-info { flex: 1; min-width: 0; }
+.summary-item-name {
+  font-size: 0.82rem; font-weight: 600; color: var(--black);
+  margin-bottom: 3px;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.summary-item-qty { font-size: 0.75rem; color: var(--mid-gray); }
+.summary-item-price { font-size: 0.82rem; font-weight: 600; color: var(--black); white-space: nowrap; }
+
+.checkout-divider { height: 1px; background: var(--light-gray); margin: 14px 0; }
+
+.summary-row {
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 0.85rem; color: var(--dark-gray); margin-bottom: 8px;
+}
+.summary-free { color: var(--wood); font-weight: 500; }
+.summary-total { font-size: 1rem; font-weight: 700; color: var(--black); margin-bottom: 0; }
+
+.btn-pay {
+  background: var(--wood); color: var(--white);
+  border: none; padding: 13px;
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem; font-weight: 600;
+  letter-spacing: 0.06em; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  margin-top: 18px;
+  transition: opacity var(--transition), transform var(--transition);
+}
+.btn-pay:hover { opacity: 0.88; transform: translateY(-1px); }
+
+.checkout-secure-note {
+  text-align: center; font-size: 0.72rem;
+  color: var(--mid-gray); margin-top: 10px; margin-bottom: 0;
+}
+
+@media (max-width: 767px) {
+  .checkout-modal-left,
+  .checkout-modal-right { max-height: none; border-right: none; }
+  .checkout-modal-right { border-top: 1px solid var(--light-gray); }
 }

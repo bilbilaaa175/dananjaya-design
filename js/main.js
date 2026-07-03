@@ -3,7 +3,7 @@
 // ============================================================
 
 import { initAuth, initLoginForm, initRegisterForm, initLogoutBtn } from './auth.js';
-import { addToCart, renderCartDropdown } from './cart.js';
+import { addToCart, renderCartDropdown, getLocalCart, getCheckedCartItems } from './cart.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
 
@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   /* ── Category filter (catalog/package/publicity) ── */
-  const catBtns        = document.querySelectorAll('.cat-btn');
+  const catBtns         = document.querySelectorAll('.cat-btn');
   const filterableCards = document.querySelectorAll('[data-category]');
   if (catBtns.length && filterableCards.length) {
     catBtns.forEach(btn => {
@@ -145,8 +145,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         productId:    card.dataset.productId,
         productName:  card.dataset.productName,
         productPrice: parseInt(card.dataset.productPrice),
-        productImg:   card.dataset.productImg  || '',
-        productCat:   card.dataset.productCat  || '',
+        productImg:   card.dataset.productImg || '',
+        productCat:   card.dataset.productCat || '',
       });
       const orig = this.innerHTML;
       this.innerHTML = '<i class="bi bi-check2"></i> Ditambahkan';
@@ -162,7 +162,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
   });
 
-  /* ── Cart button pulse (dari script.js lama) ── */
+  /* ── Cart button pulse ── */
   document.querySelectorAll('.btn-cart').forEach(btn => {
     btn.addEventListener('click', () => {
       const navCart = document.querySelector('.nav-icon-btn .bi-bag');
@@ -173,4 +173,129 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
   });
 
+
+  // ════════ CHECKOUT MODAL ════════
+
+  /* ── Render ringkasan pesanan ── */
+  function renderCheckoutSummary() {
+  const container = document.getElementById('summaryItems');
+  if (!container) return;
+
+  // Ambil hanya item yang dicentang di cart
+  const checkedData = getCheckedCartItems();
+  const checkoutItems = checkedData.map(item => ({
+    name:  item.product_name,
+    price: item.product_price,
+    qty:   item.quantity,
+    img:   item.product_img || null,
+  }));
+
+  if (checkoutItems.length === 0) {
+    container.innerHTML = `
+      <div class="text-center py-3" style="color:var(--mid-gray);font-size:0.85rem">
+        Belum ada produk dipilih.
+      </div>`;
+    ['summarySubtotal', 'summaryTotal'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.textContent = formatRp(0);
+    });
+    return;
+  }
+
+  container.innerHTML = checkoutItems.map(item => `
+    <div class="summary-item">
+      <div class="summary-item-thumb">
+        ${item.img
+          ? `<img src="${item.img}" alt="${item.name}" />`
+          : `<i class="bi bi-box-seam"></i>`}
+      </div>
+      <div class="summary-item-info">
+        <div class="summary-item-name">${item.name}</div>
+        <div class="summary-item-qty">Qty ${item.qty}</div>
+      </div>
+      <div class="summary-item-price">${formatRp(item.price * item.qty)}</div>
+    </div>
+  `).join('');
+
+  const subtotal = checkoutItems.reduce((sum, i) => sum + (i.price * i.qty), 0);
+  const shipping = 0;
+  const total    = subtotal + shipping;
+
+  const subtotalEl = document.getElementById('summarySubtotal');
+  const shippingEl = document.getElementById('summaryShipping');
+  const totalEl    = document.getElementById('summaryTotal');
+
+  if (subtotalEl) subtotalEl.textContent = formatRp(subtotal);
+  if (shippingEl) shippingEl.textContent = shipping === 0 ? 'Gratis' : formatRp(shipping);
+  if (totalEl)    totalEl.textContent    = formatRp(total);
+}
+
+  /* ── Render ulang saat modal dibuka ── */
+  const checkoutModal = document.getElementById('checkoutModal');
+  if (checkoutModal) {
+    checkoutModal.addEventListener('show.bs.modal', () => {
+      renderCheckoutSummary();
+    });
+  }
+
+  /* ── Handle klik tombol Bayar ── */
+  window.handlePay = function () {
+    const name     = document.getElementById('recipientName')?.value.trim();
+    const phone    = document.getElementById('recipientPhone')?.value.trim();
+    const email    = document.getElementById('recipientEmail')?.value.trim();
+    const address  = document.getElementById('recipientAddress')?.value.trim();
+    const city     = document.getElementById('recipientCity')?.value.trim();
+    const province = document.getElementById('recipientProvince')?.value.trim();
+    const zip      = document.getElementById('recipientZip')?.value.trim();
+    const note     = document.getElementById('orderNote')?.value.trim();
+
+    // Validasi — highlight field kosong
+    const requiredFields = [
+      'recipientName', 'recipientPhone', 'recipientEmail',
+      'recipientAddress', 'recipientCity', 'recipientProvince', 'recipientZip'
+    ];
+
+    let isValid = true;
+    requiredFields.forEach(id => {
+      const el = document.getElementById(id);
+      if (el && !el.value.trim()) {
+        el.style.borderColor = '#d0574a';
+        el.addEventListener('input', () => { el.style.borderColor = ''; }, { once: true });
+        isValid = false;
+      }
+    });
+
+    if (!isValid) return;
+
+  
+  const checkedData = getCheckedCartItems();
+  const orderData = {
+    recipient: { name, phone, email, address, city, province, zip },
+    note,
+    items: checkedData.map(i => ({
+      productId:   i.product_id,
+      productName: i.product_name,
+      price:       i.product_price,
+      qty:         i.quantity,
+    })),
+    subtotal: checkedData.reduce((sum, i) => sum + (i.product_price * i.quantity), 0),
+    shipping: 0,
+  };
+
+  console.log('Lanjut ke Midtrans');
+  console.log('Order data:', orderData);
+};
+
 });
+
+
+// ════════ HELPERS ════════
+
+/* ── Format Rupiah ── */
+function formatRp(number) {
+  return new Intl.NumberFormat('id-ID', {
+    style: 'currency',
+    currency: 'IDR',
+    minimumFractionDigits: 0
+  }).format(number);
+}
