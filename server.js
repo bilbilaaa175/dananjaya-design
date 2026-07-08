@@ -22,26 +22,47 @@ const publicPath = path.join(__dirname, 'public');
 app.use(express.json());
 app.use(express.static(publicPath));
 
+// ── [BARU] API UNTUK LOGIN ──
+app.post('/api/login', async (req, res) => {
+  const { email, password } = req.body;
+  try {
+    const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+    if (error) return res.status(400).json({ success: false, error: error.message });
+    
+    return res.json({ success: true, data });
+  } catch (err) {
+    return res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// ── [BARU] API UNTUK REGISTER ──
+app.post('/api/register', async (req, res) => {
+  const { email, password, fullName } = req.body;
+  try {
+    const { data, error } = await supabase.auth.signUp({
+      email,
+      password,
+      options: { data: { full_name: fullName } }
+    });
+    if (error) return res.status(400).json({ success: false, error: error.message });
+    
+    return res.json({ success: true, data });
+  } catch (err) {
+    return res.status(500).json({ success: false, error: err.message });
+  }
+});
+
 app.get('/api/checkout', async (req, res) => {
-  // Contoh dummy API. Nanti bisa diganti dengan logika checkout / order processing.
   return res.json({
     success: true,
     message: 'API checkout berhasil dipanggil.',
-    data: {
-      timestamp: new Date().toISOString()
-    }
+    data: { timestamp: new Date().toISOString() }
   });
 });
 
 app.get('/api/health', (req, res) => {
-  return res.json({
-    status: 'ok',
-    message: 'Express server is running.'
-  });
+  return res.json({ status: 'ok', message: 'Express server is running.' });
 });
-
-// Jika file statis tidak ditemukan, Express akan mengembalikan 404.
-// Pastikan semua page HTML dan aset berada di folder public/.
 
 if (require.main === module) {
   const port = process.env.PORT || 3000;

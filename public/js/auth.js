@@ -17,27 +17,46 @@ export async function getUser() {
   return user;
 }
 
-// ── Register ──
+// ── Register via Backend Express ──
 export async function register({ fullName, email, password }) {
-  const { data, error } = await supabase.auth.signUp({
-    email,
-    password,
-    options: {
-      data: { full_name: fullName }
-    }
+  const response = await fetch('/api/register', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ fullName, email, password })
   });
-  if (error) throw error;
-  return data;
+
+  const result = await response.json();
+  
+  if (!response.ok || !result.success) {
+    throw new Error(result.error || 'Gagal mendaftar.');
+  }
+  return result.data;
 }
 
-// ── Login ──
+// ── Login via Backend Express ──
 export async function login({ email, password }) {
-  const { data, error } = await supabase.auth.signInWithPassword({
-    email,
-    password
+  const response = await fetch('/api/login', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ email, password })
   });
-  if (error) throw error;
-  return data;
+
+  const result = await response.json();
+
+  if (!response.ok || !result.success) {
+    throw new Error(result.error || 'Email atau password salah.');
+  }
+
+  // PENTING: Sinkronkan session ke client agar initAuth() tetap bisa mendeteksi user login
+  if (result.data?.session) {
+    await supabase.auth.setSession(result.data.session);
+  }
+
+  return result.data;
 }
 
 // ── Logout ──
