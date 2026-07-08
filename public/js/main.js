@@ -5,6 +5,8 @@
 import { initAuth, initLoginForm, initRegisterForm, initLogoutBtn } from './auth.js';
 import { addToCart, renderCartDropdown, getLocalCart, getCheckedCartItems } from './cart.js';
 
+document.documentElement.classList.add('js-enabled');
+
 document.addEventListener('DOMContentLoaded', async () => {
 
   // ════════ SUPABASE — init auth ════════
