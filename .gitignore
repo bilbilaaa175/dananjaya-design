@@ -1,0 +1,13 @@
+# Dependency modules (sangat berat, tidak perlu di-push)
+node_modules/
+
+# Secrets & Environment Variables (Mencegah API Key/Password bocor)
+.env
+.env.*
+!.env.example
+
+# File sistem & Editor config
+.vscode/
+*.exe
+*.log
+.DS_Store

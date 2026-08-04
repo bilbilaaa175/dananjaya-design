@@ -1,0 +1,32 @@
+/**
+ * ZAHASKY — Tailwind Source File
+ * Ini "bahan mentah"-nya. Jangan di-link langsung ke HTML.
+ * Jalankan `npm run build:css` untuk generate public/tailwind.css dari file ini.
+ */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base styles / custom classes boleh ditambahkan di sini, mirip style.css di setup Bootstrap */
+body {
+  background-color: #FFFFFF;
+  color: #1A1A1A;
+}
+
+.section-placeholder {
+  position: relative;
+  border: 2px dashed rgba(68, 27, 7, 0.4);
+  background-color: rgba(255, 255, 255, 0.55);
+  border-radius: 1rem;
+}
+
+.section-placeholder-badge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+}
+
+/* Mobile nav: disembunyikan secara default, dibuka lewat JS toggle (lihat index.html) */
+#mobile-menu.is-open {
+  display: flex;
+}
