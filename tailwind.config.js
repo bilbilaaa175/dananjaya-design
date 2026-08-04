@@ -1,53 +1,29 @@
-/** @type {import('tailwindcss').Config} */
+/**
+ * ZAHASKY — Tailwind Configuration
+ * Palette: Cream & Espresso (muted, warm, editorial feel)
+ */
 module.exports = {
-  content: [
-    "./public/**/*.html",
-    "./public/**/*.js"
-  ],
+  // Tailwind hanya akan men-generate class yang benar-benar dipakai di file-file ini
+  content: ["./public/**/*.html", "./public/**/*.js"],
   theme: {
     extend: {
       colors: {
-        // === Zahasky Brand Palette ===
-        cream: {
-          DEFAULT: "#F9F3DB", // base background
-          50: "#FFFDF6",
-          100: "#F9F3DB",
-          200: "#F3E9C2"
-        },
-        blush: {
-          DEFAULT: "#F3D3CB", // soft accent background
-          light: "#FDE7E2",
-          dark: "#EBB9AE"
-        },
-        rose: {
-          DEFAULT: "#BE5468", // primary accent (CTA highlight, badges)
-          dark: "#A6425A"
-        },
-        espresso: {
-          DEFAULT: "#441B07", // deep brown accent / hover states
-          light: "#644639"
-        },
-        ink: {
-          DEFAULT: "#1A1A1A", // primary black (buttons, headings, text)
-          soft: "#2E2E2E"
-        },
-        graychalk: "#9CA3AF" // inactive / muted text
+        cream: "#F9F3DB",   // Base background
+        brown: "#441B07",   // Primary dark — text, buttons, footer bg
+        ink: "#1A1A1A",     // Black — untuk teks aktif
+        muted: "#8A8A8A",   // Abu-abu — untuk teks/elemen yang belum aktif
       },
       fontFamily: {
-        // Heading / Display
+        // Override default Tailwind font stacks langsung, jadi tinggal pakai
+        // class bawaan: font-serif (heading), font-sans (body, default), font-mono (angka/badge/code)
+        sans: ["Poppins", "sans-serif"],
         serif: ["'Playfair Display'", "serif"],
-        // Body & Navigation
-        sans: ["'Poppins'", "sans-serif"],
-        // Code / Numbers / Badges
-        mono: ["'JetBrains Mono'", "'Geist Mono'", "monospace"]
+        mono: ["'JetBrains Mono'", "monospace"],
       },
       borderRadius: {
-        pill: "9999px"
+        pill: "9999px",
       },
-      maxWidth: {
-        "7xl": "80rem"
-      }
-    }
+    },
   },
-  plugins: []
+  plugins: [],
 };
